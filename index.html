@@ -2,284 +2,322 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pranit Daphale</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pranit Daphale</title>
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts: Titillium Web -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Varta:wght@300..700&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Titillium Web -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varta:wght@300..700&display=swap" rel="stylesheet">
 
 
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-    <!-- Tailwind Config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        titilliumWeb: ['"Titillium Web"', 'sans-serif'],
-                        anta: ["Anta", "sans-serif"],
-                        genos: ["Genos", "sans-serif"],
-                        varta: ["Varta", "sans-serif"],
-                    },
-                    colors: {
-                        primaryBG: "#1C1C1C",
-                        yelloworange: "#FFB22C",
-                        purpalfade: "#8E7DBE",
-                        fadeGreen: "#90C67C",
-                        fadegray: "#262626",
-                        work: "#7F8CAA",
-                    }
-                }
-            }
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            titilliumWeb: ['"Titillium Web"', 'sans-serif'],
+            anta: ["Anta", "sans-serif"],
+            genos: ["Genos", "sans-serif"],
+            varta: ["Varta", "sans-serif"],
+          },
+          colors: {
+            primaryBG: "#000000",
+            yelloworange: "#FFB22C",
+            purpalfade: "#8E7DBE",
+            fadeGreen: "#90C67C",
+            fadegray: "#262626",
+            work: "#7F8CAA",
+          }
         }
-    </script>
+      }
+    }
+  </script>
 </head>
 
-<body class="font-anta text-white bg-primaryBG text-gray-800">
-
-<nav class="flex flex-wrap items-center justify-between p-6 relative">
-  <!-- LOGO LEFT -->
-  <div class="logo flex-shrink-0">
-    <h1 class="hover:text-purpalfade ease-linear duration-200 cursor-pointer text-xl md:text-2xl">
-      Pranit Daphale
-    </h1>
-  </div>
+<body class="font-anta scroll-smooth overflow-x-hidden text-white bg-primaryBG text-gray-800">
 
 
 
-  <!-- ✅ Hamburger toggle RIGHT (mobile only) -->
-  <button id="menu-toggle" class="md:hidden text-3x ml-auto">
-    &#9776; <!-- Unicode hamburger -->
-  </button>
-
-  <!-- Nav Links (center for desktop, full for mobile) -->
-  <div id="menu" class="w-full md:w-auto hidden md:flex md:items-center md:space-x-9 mt-4 md:mt-0">
-    <ul class="flex flex-col md:flex-row gap-4 md:gap-9 items-center underline-offset-4 underline decoration-2">
-      <li><a class="hover:text-yelloworange ease-linear duration-200" href="#">Work</a></li>
-      <li><a class="hover:text-yelloworange ease-linear duration-200" href="#">Projects</a></li>
-      <li><a class="hover:text-yelloworange ease-linear duration-200" href="#">About</a></li>
-      <li class="relative group">
-        <a class="hover:text-yelloworange ease-linear duration-200 cursor-pointer" href="#">Socials</a>
-        <ul class="absolute w-[150px] bg-fadegray left-0 mt-0 hidden group-hover:block bg-primaryBG text-white shadow-lg rounded-md p-2 space-y-1 z-10">
-          <li class="block px-4 py-1 hover:text-fadeGreen"><a href="#">LinkedIn</a></li>
-          <li class="block px-4 py-1 hover:text-fadeGreen"><a href="#">Instagram</a></li>
-          <li class="block px-4 py-1 hover:text-fadeGreen"><a href="#">Github</a></li>
-        </ul>
-      </li>
-    </ul>
-      <!-- CTA BUTTON RIGHT -->
-  <div class="Navbtn ml-auto hidden md:block">
-    <button class="py-2 px-5 border rounded-full text-sm md:text-[2vh] hover:bg-fadeGreen hover:border-black ease-linear duration-200">
-      <a href="#">Book A Call</a>
-    </button>
-  </div>
-
-    <!-- ✅ CTA BUTTON inside nav for mobile -->
-    <div class="Navbtn md:hidden mt-4">
-      <button class="py-2 px-5 border w-full rounded-full text-sm hover:bg-fadeGreen hover:border-black ease-linear duration-200">
-        <a href="#">Book A Call</a>
-      </button>
-    </div>
-  </div>
-</nav>
-
-
-<!-- ✅ Responsive HERO -->
-<section class="w-full px-4">
-  <div class="mt-8 m-auto text-center">
-    <p class="text-base md:text-lg">&#128079 Namaste! I am <span class="text-fadeGreen"> Pranit Daphale</span></p>
-    <h1 class="font-titilliumWeb font-black text-4xl md:text-[10vh] mt-7 leading-tight md:leading-[13vh]">
-      Creative <span class="text-yelloworange"> Designing</span>
-      <span class="font-varta text-5xl md:text-[17vh]">&</span>
-      <span class="text-5xl md:text-[15vh]">
-        <span class="text-purpalfade">Creative</span> Engineering
-      </span>
-    </h1>
-    <img class="w-full max-w-[500px] mx-auto mt-4 md:mt-[-12vh]" src="./images/pranit-daphale.png" alt="">
-  </div>
-</section>
-
-
- <section class="w-full mt-10">
-  <div class="w-[90%] m-auto flex flex-col md:flex-row justify-between gap-10">
-    <!-- Text Block -->
-    <div class="w-full md:w-[50%] h-auto md:h-[60vh] flex items-center">
-      <h1 class="text-xl md:text-[4vh] w-full md:w-[50vh]">
-        I create <span class="text-yelloworange">unconventional</span> yet
-        functional & visually pleasing interfaces for the
-        <span class="text-purpalfade">mobile</span> and
-        <span class="text-purpalfade">web</span>.
+  <nav class="flex flex-wrap items-center justify-between p-6 relative">
+    <!-- LOGO LEFT -->
+    <div class="logo flex-shrink-0">
+      <h1 class="hover:text-purpalfade ease-linear duration-200 cursor-pointer text-xl md:text-2xl">
+        Pranit Daphale
       </h1>
     </div>
 
-    <!-- Images Block -->
-    <div class="w-full md:w-[50%] relative flex md:block justify-center">
-      <!-- For mobile, stack images normally; absolute only on md+ -->
-      <div class="relative md:static flex flex-col md:block items-center">
-        <img
-          class="w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[3deg] duration-200 ease-linear mb-4 md:mb-0 md:absolute"
-          src="https://plus.unsplash.com/premium_photo-1749735100764-c6d8aab144af?w=400"
-          alt=""
-        />
-        <img
-          class="w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[13deg] duration-200 ease-linear mb-4 md:mb-0 md:absolute md:ml-10 rotate-0 md:rotate-[10deg]"
-          src="https://images.unsplash.com/photo-1750112938913-a174d739469c?w=400"
-          alt=""
-        />
-        <img
-          class="w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[23deg] duration-200 ease-linear md:absolute md:ml-20 rotate-0 md:rotate-[20deg]"
-          src="https://images.unsplash.com/photo-1750055449467-6a488edd16a2?w=400"
-          alt=""
-        />
+
+
+    <!-- ✅ Hamburger toggle RIGHT (mobile only) -->
+    <button id="menu-toggle" class="md:hidden text-3x ml-auto">
+      &#9776; <!-- Unicode hamburger -->
+    </button>
+
+    <!-- Nav Links (center for desktop, full for mobile) -->
+    <div id="menu" class="w-full  md:w-auto hidden md:flex md:items-center md:space-x-9 mt-4 md:mt-0">
+      <ul class="flex flex-col md:flex-row gap-4 md:gap-9 items-center underline-offset-4 underline decoration-2">
+        <li><a class="hover:text-yelloworange ease-linear duration-200" href="#">Work</a></li>
+        <li><a class="hover:text-yelloworange ease-linear duration-200" href="#">Projects</a></li>
+        <li><a class="hover:text-yelloworange ease-linear duration-200" href="#">About</a></li>
+        <li class="relative group text-center md:text-left">
+          <a class="hover:text-yelloworange ease-linear duration-200 cursor-pointer" href="#">Socials</a>
+          <ul
+            class="md:absolute w-full ml-[35px] md:ml-[0px] text-left md:w-[130px] pt-3  md:bg-fadegray md:left-0 mt-0 hidden group-hover:block md:bg-primaryBG text-white shadow-lg rounded-md md:p-2 md:space-y-1 z-10">
+            <li class="block px-4 py-1 hover:text-fadeGreen"><a href="#">LinkedIn</a></li>
+            <li class="block px-4 py-1 hover:text-fadeGreen"><a href="#">Instagram</a></li>
+            <li class="block px-4 py-1 hover:text-fadeGreen"><a href="#">Github</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- CTA BUTTON RIGHT -->
+      <div class="Navbtn ml-auto hidden md:block">
+        <button
+          class="py-2 px-5 border rounded-full text-sm md:text-[2vh] hover:bg-fadeGreen hover:border-black ease-linear duration-200">
+          <a href="#">Book A Call</a>
+        </button>
       </div>
-    </div>
-  </div>
-</section>
 
-
-   <!-- ✅ Responsive Service Block -->
-<section class="w-full my-10 px-4">
-  <div class="w-full md:w-[90%] m-auto relative">
-    <div class="p-3 border bg-fadegray ml-4 inline-block rounded-full absolute hover:bg-white hover:text-black duration-200 ease-in">
-      <i class="ri-arrow-right-down-line text-[3vh]"></i>
-    </div>
-    <div class="px-6 py-8 border inline-block rounded-full mt-8 w-full md:w-[40%] hover:bg-white hover:text-black duration-200 ease-in">
-      <p>Things I can help you with.</p>
-      <h2>WEB & MOBILE / UI&UX / BRANDING / FRONT-END DEVELOPMENT</h2>
-    </div>
-  </div>
-</section>
-
-<!-- ✅ Responsive Work Section -->
-<section class="w-full px-4">
-  <div class="w-full md:w-[90%] m-auto flex flex-col md:flex-row justify-between items-center gap-10">
-    <div class="w-full md:w-[45%]">
-      <img class="w-full rounded-[20px]" src="https://images.unsplash.com/photo-1749989315513-946c33cdefb5?w=400" alt="">
-    </div>
-    <div class="w-full md:w-[45%] text-right">
-      <div class="text-3xl md:text-[6vh] leading-snug md:leading-[4vh] font-genos font-black mb-6 md:mb-10">
-        <h3 class="text-work">Work</h3>
-        <h3>Work</h3>
-        <h3 class="text-work">Work</h3>
-      </div>
-      <img class="w-full rounded-[20px]" src="https://images.unsplash.com/photo-1750126833705-ba98013f16f3?w=400" alt="">
-    </div>
-  </div>
-
-  <div class="w-full md:w-[70%] m-auto my-10 md:my-20">
-    <img class="w-full rounded-[20px]" src="https://images.unsplash.com/photo-1746105839114-fbc9c81fcb17?w=400" alt="">
-  </div>
-
-  <div class="flex flex-col md:flex-row justify-between gap-6 w-full md:w-[90%] m-auto">
-    <div class="w-full md:w-[50%]">
-      <img class="w-full rounded-[20px]" src="https://images.unsplash.com/photo-1746311507414-bce6f67abb44?w=400" alt="">
-    </div>
-    <div class="w-full md:w-[50%]">
-      <img class="w-full rounded-[20px]" src="https://images.unsplash.com/photo-1749318398976-5a9b45307aae?w=400" alt="">
-    </div>
-  </div>
-</section>
-
-<!-- ✅ Responsive Archive -->
-<section class="w-full my-20 px-4">
-  <div class="w-full md:w-[90%] m-auto text-center">
-    <h5 class="mb-5">Archive Works</h5>
-    <div class="inline-block space-y-4 md:space-y-0 md:space-x-6">
-      <h3 class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200"><a href="#">Project 1</a></h3>
-      <h3 class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200"><a href="#">Project 2</a></h3>
-      <h3 class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200"><a href="#">Project 3</a></h3>
-      <h3 class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200"><a href="#">Project 4</a></h3>
-    </div>
-  </div>
-</section>
-
-<!-- ✅ Responsive Clients / Logos -->
-<section class="w-full my-20 px-4">
-  <div class="w-full bg-white overflow-x-auto py-10 flex gap-4">
-    <img class="w-[8vh] md:w-[12vh] rounded-full shrink-0" src="#" alt="">
-    <img class="w-[8vh] md:w-[12vh] rounded-full shrink-0" src="#" alt="">
-    <img class="w-[8vh] md:w-[12vh] rounded-full shrink-0" src="#" alt="">
-    <img class="w-[8vh] md:w-[12vh] rounded-full shrink-0" src="#" alt="">
-    <img class="w-[8vh] md:w-[12vh] rounded-full shrink-0" src="#" alt="">
-    <img class="w-[8vh] md:w-[12vh] rounded-full shrink-0" src="#" alt="">
-    <img class="w-[8vh] md:w-[12vh] rounded-full shrink-0" src="#" alt="">
-  </div>
-</section>
-
-<!-- ✅ Responsive About -->
-<section class="w-full my-20 px-4">
-  <div class="w-full md:w-[90%] m-auto">
-    <div class="text-3xl md:text-[6vh] leading-snug md:leading-[4vh] font-genos font-black mb-10">
-      <h3 class="text-work">About Me</h3>
-      <h3>About Me</h3>
-      <h3 class="text-work">About Me</h3>
-    </div>
-    <div class="flex flex-col md:flex-row justify-between items-center gap-6 mt-10">
-      <div class="p-2 border bg-fadegray inline-block rounded-full hover:bg-white hover:text-black duration-200 ease-in">
-        <i class="ri-arrow-right-down-line text-[7vh]"></i>
-      </div>
-      <div class="w-full md:w-[40%]">
-        <p>A passionate product designer 🤙 with a knack for creating seamless user experiences...</p>
-      </div>
-    </div>
-    <div class="flex flex-col md:flex-row justify-between items-center gap-6 mt-10">
-      <div class="w-full md:w-[40%]">
-        <p>Driven by a minimalist aesthetic and a passion for problem-solving...</p>
-      </div>
-      <div class="w-full md:w-[50%] text-right">
-        <button class="py-2 px-5 border rounded-full hover:bg-white hover:text-black duration-200 ease-in">
-          <a href="#">Download My CV 📃</a>
+      <!-- ✅ CTA BUTTON inside nav for mobile -->
+      <div class="Navbtn md:hidden mt-4">
+        <button
+          class="py-2 px-5 border w-full rounded-full text-sm hover:bg-fadeGreen hover:border-black ease-linear duration-200">
+          <a href="#">Book A Call</a>
         </button>
       </div>
     </div>
-  </div>
+  </nav>
+
+<section class="imagepopup w-[40vh] h-[40vh] bg-white absolute rounded-[10px] hidden bg-cover bg-center pointer-events-none z-[999]">
+
 </section>
 
-<!-- ✅ Responsive Footer -->
-<section class="w-full mt-20 bg-[url('./images/footer-bg.png')] bg-cover bg-center bg-no-repeat px-4">
-  <div class="w-full md:w-[90%] m-auto text-center py-20">
-    <p class="text-fadeGreen text-xl md:text-[3vh]">NEED A DESIGNER / DEVELOPER?</p>
-    <div class="mt-10 md:mt-20 text-4xl md:text-[10vh] font-genos font-black leading-tight md:leading-[9vh]">
-      <h1>Let’s Work</h1>
-      <h1 class="ml-0 md:ml-[35vh]">together.</h1>
+  <section class="w-full px-4">
+    <div class="Home mt-8 m-auto text-center">
+      <p class="text-base md:text-lg">&#128079 Namaste! I am <span class="text-fadeGreen"> Pranit Daphale</span></p>
+      <h1 class="font-titilliumWeb font-black text-4xl md:text-[10vh] mt-7 leading-tight md:leading-[13vh]">
+        Creative <span class="text-yelloworange"> Designing</span>
+        <span class="font-varta text-5xl md:text-[17vh]">&</span>
+        <span class="text-5xl md:text-[15vh]">
+          <span class="text-purpalfade">Creative</span> Engineering
+        </span>
+      </h1>
+      <img class="w-full max-w-[500px] mx-auto mt-4 md:mt-[-12vh] z-10" src="./images/pranit-daphale.png" alt="">
     </div>
-    <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-5 mt-10">
-      <button class="text-xl md:text-[3vh] py-2 px-5 border-[3px] rounded-full hover:bg-white hover:text-black duration-200 ease-in">
-        <a href="#">Message</a>
-      </button>
-      <button class="text-xl md:text-[3vh] py-2 px-5 border-[3px] rounded-full hover:bg-white hover:text-black duration-200 ease-in">
-        <a href="#">Discuss Project</a>
-      </button>
+  </section>
+
+  <section class="page2 w-full mt-10">
+    <div class="w-[90%] m-auto flex flex-col md:flex-row justify-between gap-10">
+      <!-- Text Block -->
+      <div class="page2-content w-full md:w-[50%] h-auto md:h-[60vh] flex items-center">
+        <h1 class="text-xl md:text-[4vh] w-full md:w-[50vh]">
+          I create <span class="text-yelloworange">unconventional</span> yet
+          functional & visually pleasing interfaces for the
+          <span class="text-purpalfade">mobile</span> and
+          <span class="text-purpalfade">web</span>.
+        </h1>
+      </div>
+
+      <!-- Images Block -->
+      <div class=" w-full md:w-[50%] relative flex md:block justify-center">
+        <!-- For mobile, stack images normally; absolute only on md+ -->
+        <div class="page2-images relative md:static flex flex-col md:block items-center">
+          <img data-image="https://images.unsplash.com/photo-1750045662226-536c4e05abfa?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyM3x8fGVufDB8fHx8fA%3D%3D"
+            class="popup-items shadow-[-8px_8px_1px_1px_rgba(0,_0,_0,_0.35)] w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[3deg] duration-200 ease-linear mb-4 md:mb-0 md:absolute"
+            src="https://plus.unsplash.com/premium_photo-1749735100764-c6d8aab144af?w=400" alt="" />
+          <img data-image="https://images.unsplash.com/photo-1751019275852-fa5da27ef71b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyNnx8fGVufDB8fHx8fA%3D%3D"
+            class="popup-items shadow-[-8px_8px_1px_1px_rgba(0,_0,_0,_0.35)] w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[13deg] duration-200 ease-linear mb-4 md:mb-0 md:absolute md:ml-10 rotate-0 md:rotate-[10deg]"
+            src="https://images.unsplash.com/photo-1750112938913-a174d739469c?w=400" alt="" />
+          <img data-image="https://images.unsplash.com/photo-1751510366747-fa1bdc638853?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMHx8fGVufDB8fHx8fA%3D%3D"
+            class="popup-items shadow-[-8px_8px_1px_1px_rgba(0,_0,_0,_0.35)] w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[23deg] duration-200 ease-linear md:absolute md:ml-20 rotate-0 md:rotate-[20deg]"
+            src="https://images.unsplash.com/photo-1750055449467-6a488edd16a2?w=400" alt="" />
+        </div>
+      </div>
     </div>
-    <div class="flex flex-col md:flex-row justify-center items-center mt-10 gap-4 md:gap-7 text-lg md:text-[3vh]">
-      <h4>📩 pranitworkspace@gmail.com</h4>
-      <h4>📞 +91 8975205712</h4>
+  </section>
+
+
+  <section class="sticky-content flex w-full h-[100vh] items-center overflow-x-hidden">
+      <h1 class="shrink-0 text-[40vh]">USER-EXPERIANCE</h1>
+  </section>
+
+  <!-- ✅ Responsive Service Block -->
+  <section class="w-full my-10 px-4">
+    <div class="page3 w-full md:w-[90%] m-auto relative">
+      <div
+        class="page3-info-i p-3 border bg-fadegray ml-4 inline-block rounded-full absolute hover:bg-white hover:text-black duration-200 ease-in">
+        <i class="ri-arrow-right-down-line text-[3vh]"></i>
+      </div>
+      <div
+        class="page3-info-content px-6 py-8 border inline-block rounded-full mt-8 w-full md:w-[40%] hover:bg-white hover:text-black duration-200 ease-in">
+        <p>Things I can help you with.</p>
+        <h2>WEB & MOBILE / UI&UX / BRANDING / FRONT-END DEVELOPMENT</h2>
+      </div>
     </div>
-    <div class="flex flex-col md:flex-row justify-center gap-10 my-20">
-      <!-- Example social blocks, same structure -->
+  </section>
+
+  <!-- ✅ Responsive Work Section -->
+  <section class="page4 w-full px-4">
+    <div class="page4-img1 w-full md:w-[90%] m-auto flex flex-col md:flex-row justify-between items-center gap-10">
+      <div class="w-full md:w-[45%]">
+        <img data-image="https://images.unsplash.com/photo-1751647670943-74e2045c942a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D" class="popup-items w-full rounded-[20px]" src="https://images.unsplash.com/photo-1749989315513-946c33cdefb5?w=400"
+          alt="">
+      </div>
+      <div class="page4-img2 w-full md:w-[45%] text-right">
+        <div class="text-3xl md:text-[6vh] leading-snug md:leading-[4vh] font-genos font-black mb-6 md:mb-10">
+          <h3 class="text-work">Work</h3>
+          <h3>Work</h3>
+          <h3 class="text-work">Work</h3>
+        </div>
+        <img data-image="https://images.unsplash.com/photo-1751647670943-74e2045c942a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D" class="popup-items w-full rounded-[20px]" src="https://images.unsplash.com/photo-1750126833705-ba98013f16f3?w=400"
+          alt="">
+      </div>
     </div>
-    <hr>
-    <div class="w-full md:w-[35%] m-auto mt-10 text-gray-400 text-sm md:text-[2vh]">
-      <p>Designed & developed with 🤍, by Pranit Daphale. ©2024 All Rights Reserved.</p>
+
+    <div class="page4-img3 w-full md:w-[70%] m-auto my-10 md:my-20">
+      <img data-image="https://images.unsplash.com/photo-1751647670943-74e2045c942a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D" class="popup-items w-full rounded-[20px]" src="https://images.unsplash.com/photo-1746105839114-fbc9c81fcb17?w=400"
+        alt="">
     </div>
-  </div>
-</section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="script.js"></script>
+
+    <div class="page4-img4 flex flex-col md:flex-row justify-between gap-6 w-full md:w-[90%] m-auto">
+      <div class="w-full md:w-[50%]">
+        <img data-image="https://images.unsplash.com/photo-1751647670943-74e2045c942a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D" class="popup-items w-full rounded-[20px]" src="https://images.unsplash.com/photo-1746311507414-bce6f67abb44?w=400"
+          alt="">
+      </div>
+      <div class="page4-img5 w-full md:w-[50%]">
+        <img data-image="https://images.unsplash.com/photo-1751647670943-74e2045c942a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D" class="popup-items w-full rounded-[20px]" src="https://images.unsplash.com/photo-1749318398976-5a9b45307aae?w=400"
+          alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Responsive Archive -->
+  <section class="w-full relative my-20 px-4">
+    <div
+      class="hoverdiv bg-cover bg-center bg-no-repeat hidden w-[25%] h-[60%] top-[50px] md:top-[0px] rounded-[10px] md:left-[70px] md:w-[20vw] md:h-[20vw] bg-white absolute z-10">
+    </div>
+    <div class="page5 w-full md:w-[90%] m-auto text-center">
+      <h5 class="mb-5">More Works</h5>
+      <div class="inline-block space-y-4 md:space-y-0 md:space-x-6">
+        <h3
+          data-image="https://images.unsplash.com/photo-1499428665502-503f6c608263?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8"
+          id="project-elem"
+          class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200 md:ml-5"><a
+            href="#">Project 1</a></h3>
+        <h3
+          data-image="https://images.unsplash.com/photo-1749200622589-86f652f26761?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8"
+          id="project-elem" class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200"><a
+            href="#">Project 2</a></h3>
+        <h3
+          data-image="https://plus.unsplash.com/premium_photo-1686133832542-e95f2a6d953e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8"
+          id="project-elem" class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200"><a
+            href="#">Project 3</a></h3>
+        <h3
+          data-image="https://images.unsplash.com/photo-1750306957077-b74e45fe1819?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNnx8fGVufDB8fHx8fA%3D%3D"
+          id="project-elem" class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200"><a
+            href="#">Project 4</a></h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Responsive Clients / Logos -->
+  <section class=" w-full bg-yellow-400 my-20 px-4">
+    <div class="marque flex items-center  w-full py-8 px-2">
+
+      <marquee direction="left" scrollamount="5" class="w-full text-black text-[5vh]">
+        HTML, CSS, JS, NODEJS, EXPRESSJS, REACTJS, MONGODB, MYSQL, WORDPRESS, SHOPIFY, WIX, AI
+      </marquee>
+
+    </div>
+    </div>
+
+  </section>
+
+  <!-- ✅ Responsive About -->
+  <section class="w-full my-20 px-4">
+    <div class="page6 w-full md:w-[90%] m-auto">
+      <div class="text-3xl md:text-[6vh] leading-snug md:leading-[4vh] font-genos font-black mb-10">
+        <h3 class="text-work">About Me</h3>
+        <h3>About Me</h3>
+        <h3 class="text-work">About Me</h3>
+      </div>
+      <div class="page6-content flex flex-col md:flex-row justify-between items-center gap-6 mt-10">
+        <div
+          class="p-2 border bg-fadegray inline-block rounded-full hover:bg-white hover:text-black duration-200 ease-in">
+          <i class="ri-arrow-right-down-line text-[7vh]"></i>
+        </div>
+        <div class="w-full md:w-[40%]">
+          <p>A passionate product designer 🤙 with a knack for creating seamless user experiences...</p>
+        </div>
+      </div>
+      <div class="page6-content flex flex-col md:flex-row justify-between items-center gap-6 mt-10">
+        <div class="w-full md:w-[40%]">
+          <p>Driven by a minimalist aesthetic and a passion for problem-solving...</p>
+        </div>
+        <div class="page6-content w-full md:w-[50%] text-right">
+          <button class="py-2 px-5 border rounded-full hover:bg-white hover:text-black duration-200 ease-in">
+            <a href="#">Download My CV 📃</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Responsive Footer -->
+  <section class="w-full mt-20 bg-[url('./images/footer-bg.png')] bg-cover bg-center bg-no-repeat px-4">
+    <div class="page7 w-full md:w-[90%] m-auto text-center py-20">
+      <p class="text-fadeGreen text-xl md:text-[3vh]">NEED A DESIGNER / DEVELOPER?</p>
+      <div class="mt-10 md:mt-20 text-4xl md:text-[10vh] font-genos font-black leading-tight md:leading-[9vh]">
+        <h1>Let’s Work</h1>
+        <h1 class="ml-0 md:ml-[35vh]">together.</h1>
+      </div>
+      <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-5 mt-10">
+        <button
+          class="text-xl md:text-[3vh] py-2 px-5 border-[3px] rounded-full hover:bg-white hover:text-black duration-200 ease-in">
+          <a href="#">Message</a>
+        </button>
+        <button
+          class="text-xl md:text-[3vh] py-2 px-5 border-[3px] rounded-full hover:bg-white hover:text-black duration-200 ease-in">
+          <a href="#">Discuss Project</a>
+        </button>
+      </div>
+      <div class="flex flex-col md:flex-row justify-center items-center mt-10 gap-4 md:gap-7 text-lg md:text-[3vh]">
+        <h4>📩 pranitworkspace@gmail.com</h4>
+        <h4>📞 +91 8975205712</h4>
+      </div>
+      <div class="flex flex-col md:flex-row justify-center gap-10 my-20">
+        <!-- Example social blocks, same structure -->
+      </div>
+      <hr>
+      <div class="w-full md:w-[35%] m-auto mt-10 text-gray-400 text-sm md:text-[2vh]">
+        <p>Designed & developed with 🤍, by Pranit Daphale. ©2025 All Rights Reserved.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+    integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
+    integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
