@@ -243,13 +243,13 @@ hoverContent();
 
 function stickytext() {
   gsap.to(".sticky-content h1", {
-    x: "-100%",
+    x: "-80%",
     scrollTrigger: {
       trigger: ".sticky-content",
       scroller: "body",
 
       start: "top 0%",
-      end: "top -100%",
+      end: "top -80%",
       scrub: 2,
       pin: true,
     },
@@ -290,3 +290,38 @@ function imagepopup() {
 }
 
 imagepopup();
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  function schedulecall() {
+    let schedulegmeet = document.querySelectorAll("#schedulegmeet");
+    let scheduleCall = document.querySelector("#schedule-open");
+    let scheduleClose = document.querySelector("#schedule-close");
+
+    schedulegmeet.forEach((e) => {
+      e.addEventListener("click", () => {
+        scheduleCall.style.display = "block";
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    if (scheduleClose) {
+      scheduleClose.addEventListener("click", () => {
+        scheduleCall.style.display = "none";
+        document.body.style.overflow = "auto";
+      });
+    } else {
+      console.log("No schedule-close found");
+    }
+  }
+  schedulecall();
+});
+
+

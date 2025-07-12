@@ -50,7 +50,13 @@
 
 <body class="font-anta scroll-smooth overflow-x-hidden text-white bg-primaryBG text-gray-800">
 
-
+  <!-- schedule the call -->
+  <div id="schedule-open" class="hidden absolute fixed bg-[#fffff] backdrop-blur-3xl w-full h-full z-[10]">
+    <div class="w-full h-full relative">
+        <i id="schedule-close" class="ri-close-line absolute right-5 top-5 px-2 text-[3vh] bg-black text-white md:right-20 md:top-10 md:text-[4vh] py-1 md:px-3 md:bg-white md:text-black rounded-full z-[99999]"></i>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/pranitworkspace/30min" style="min-width:320px;height:700px;"></div>
+    </div>
+  </div>
 
   <nav class="flex flex-wrap items-center justify-between p-6 relative">
     <!-- LOGO LEFT -->
@@ -70,44 +76,42 @@
     <!-- Nav Links (center for desktop, full for mobile) -->
     <div id="menu" class="w-full  md:w-auto hidden md:flex md:items-center md:space-x-9 mt-4 md:mt-0">
       <ul class="flex flex-col md:flex-row gap-4 md:gap-9 items-center underline-offset-4 underline decoration-2">
-        <li><a class="hover:text-yelloworange ease-linear duration-200" href="#">Work</a></li>
-        <li><a class="hover:text-yelloworange ease-linear duration-200" href="#">Projects</a></li>
-        <li><a class="hover:text-yelloworange ease-linear duration-200" href="#">About</a></li>
+        <li><a class="hover:text-yelloworange ease-linear duration-200" href="#work">Projects</a></li>
+        <li><a class="hover:text-yelloworange ease-linear duration-200" href="#about">About</a></li>
         <li class="relative group text-center md:text-left">
           <a class="hover:text-yelloworange ease-linear duration-200 cursor-pointer" href="#">Socials</a>
           <ul
-            class="md:absolute w-full ml-[35px] md:ml-[0px] text-left md:w-[130px] pt-3  md:bg-fadegray md:left-0 mt-0 hidden group-hover:block md:bg-primaryBG text-white shadow-lg rounded-md md:p-2 md:space-y-1 z-10">
-            <li class="block px-4 py-1 hover:text-fadeGreen"><a href="#">LinkedIn</a></li>
-            <li class="block px-4 py-1 hover:text-fadeGreen"><a href="#">Instagram</a></li>
-            <li class="block px-4 py-1 hover:text-fadeGreen"><a href="#">Github</a></li>
+            class="md:absolute w-full ml-[35px] md:ml-[0px] text-left md:w-[130px] pt-3 md:left-0 mt-0 hidden group-hover:block md:bg-primaryBG text-white shadow-lg rounded-md md:p-2 md:space-y-1 ">
+            <li class="block px-4 py-1 hover:text-fadeGreen"><a href="https://www.linkedin.com/in/pranitdaphale/" target="_blank">LinkedIn</a></li>
+            <li class="block px-4 py-1 hover:text-fadeGreen"><a href="https://www.instagram.com/pranit.daphale/" target="_blank">Instagram</a></li>
+            <li class="block px-4 py-1 hover:text-fadeGreen"><a href="https://github.com/PranitWork" target="_blank">Github</a></li>
           </ul>
         </li>
       </ul>
       <!-- CTA BUTTON RIGHT -->
       <div class="Navbtn ml-auto hidden md:block">
-        <button
+        <button id="schedulegmeet"
           class="py-2 px-5 border rounded-full text-sm md:text-[2vh] hover:bg-fadeGreen hover:border-black ease-linear duration-200">
-          <a href="#">Book A Call</a>
+          Book A Call
         </button>
       </div>
 
       <!-- ✅ CTA BUTTON inside nav for mobile -->
       <div class="Navbtn md:hidden mt-4">
-        <button
+        <button id="schedulegmeet"
           class="py-2 px-5 border w-full rounded-full text-sm hover:bg-fadeGreen hover:border-black ease-linear duration-200">
-          <a href="#">Book A Call</a>
+          Book A Call
         </button>
       </div>
     </div>
   </nav>
 
 <section class="imagepopup w-[40vh] h-[40vh] bg-white absolute rounded-[10px] hidden bg-cover bg-center pointer-events-none z-[999]">
-
 </section>
 
-  <section class="w-full px-4">
+  <section class="w-full px-4 ">
     <div class="Home mt-8 m-auto text-center">
-      <p class="text-base md:text-lg">&#128079 Namaste! I am <span class="text-fadeGreen"> Pranit Daphale</span></p>
+      <p class="text-base inline-block md:text-lg">&#128079 Namaste! I am <span class="text-fadeGreen"> Pranit Daphale</span></p>
       <h1 class="font-titilliumWeb font-black text-4xl md:text-[10vh] mt-7 leading-tight md:leading-[13vh]">
         Creative <span class="text-yelloworange"> Designing</span>
         <span class="font-varta text-5xl md:text-[17vh]">&</span>
@@ -115,7 +119,7 @@
           <span class="text-purpalfade">Creative</span> Engineering
         </span>
       </h1>
-      <img class="w-full max-w-[500px] mx-auto mt-4 md:mt-[-12vh] z-10" src="./images/pranit-daphale.png" alt="">
+      <img class="w-full max-w-[80vh] mx-auto mt-4 md:mt-[-12vh] z-10" src="./images/pranit-daphale.png" alt="">
     </div>
   </section>
 
@@ -123,7 +127,7 @@
     <div class="w-[90%] m-auto flex flex-col md:flex-row justify-between gap-10">
       <!-- Text Block -->
       <div class="page2-content w-full md:w-[50%] h-auto md:h-[60vh] flex items-center">
-        <h1 class="text-xl md:text-[4vh] w-full md:w-[50vh]">
+        <h1 class="text-xl md:text-[4vh] w-full md:w-[50vh] 2xl:leading-[35px]">
           I create <span class="text-yelloworange">unconventional</span> yet
           functional & visually pleasing interfaces for the
           <span class="text-purpalfade">mobile</span> and
@@ -135,15 +139,18 @@
       <div class=" w-full md:w-[50%] relative flex md:block justify-center">
         <!-- For mobile, stack images normally; absolute only on md+ -->
         <div class="page2-images relative md:static flex flex-col md:block items-center">
-          <img data-image="https://images.unsplash.com/photo-1750045662226-536c4e05abfa?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyM3x8fGVufDB8fHx8fA%3D%3D"
-            class="popup-items shadow-[-8px_8px_1px_1px_rgba(0,_0,_0,_0.35)] w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[3deg] duration-200 ease-linear mb-4 md:mb-0 md:absolute"
-            src="https://plus.unsplash.com/premium_photo-1749735100764-c6d8aab144af?w=400" alt="" />
-          <img data-image="https://images.unsplash.com/photo-1751019275852-fa5da27ef71b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyNnx8fGVufDB8fHx8fA%3D%3D"
-            class="popup-items shadow-[-8px_8px_1px_1px_rgba(0,_0,_0,_0.35)] w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[13deg] duration-200 ease-linear mb-4 md:mb-0 md:absolute md:ml-10 rotate-0 md:rotate-[10deg]"
-            src="https://images.unsplash.com/photo-1750112938913-a174d739469c?w=400" alt="" />
-          <img data-image="https://images.unsplash.com/photo-1751510366747-fa1bdc638853?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMHx8fGVufDB8fHx8fA%3D%3D"
-            class="popup-items shadow-[-8px_8px_1px_1px_rgba(0,_0,_0,_0.35)] w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[23deg] duration-200 ease-linear md:absolute md:ml-20 rotate-0 md:rotate-[20deg]"
-            src="https://images.unsplash.com/photo-1750055449467-6a488edd16a2?w=400" alt="" />
+          <a href="https://geosight360.com/" target="_blank">
+          <img data-image="./images/geosight360-ui.png"
+            class="cursor-pointer popup-items shadow-[-8px_8px_1px_1px_rgba(0,_0,_0,_0.35)] w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[3deg] duration-200 ease-linear mb-4 md:mb-0 md:absolute"
+            src="./images/geosight360.jpg" alt="" /></a>
+            <a href="https://tasktree-qctd.onrender.com/login"  target="_blank">
+          <img data-image="./images/tasktree-ui.png"
+            class="cursor-pointer popup-items shadow-[-8px_8px_1px_1px_rgba(0,_0,_0,_0.35)] w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[13deg] duration-200 ease-linear mb-4 md:mb-0 md:absolute md:ml-10 rotate-0 md:rotate-[10deg]"
+            src="./images/task-tree.jpg" alt="" /></a>
+            <a href="https://recipe-management-system-722w.onrender.com/"  target="_blank">
+          <img data-image="./images/recipe-ui.png"
+            class="cursor-pointer popup-items shadow-[-8px_8px_1px_1px_rgba(0,_0,_0,_0.35)] w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[23deg] duration-200 ease-linear md:absolute md:ml-20 rotate-0 md:rotate-[20deg]"
+            src="./images/recipe-management-system.jpg" alt="" /></a>
         </div>
       </div>
     </div>
@@ -170,36 +177,42 @@
   </section>
 
   <!-- ✅ Responsive Work Section -->
-  <section class="page4 w-full px-4">
+  <section id="work" class="page4 w-full px-4">
     <div class="page4-img1 w-full md:w-[90%] m-auto flex flex-col md:flex-row justify-between items-center gap-10">
       <div class="w-full md:w-[45%]">
-        <img data-image="https://images.unsplash.com/photo-1751647670943-74e2045c942a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D" class="popup-items w-full rounded-[20px]" src="https://images.unsplash.com/photo-1749989315513-946c33cdefb5?w=400"
-          alt="">
+        <a href="https://arykai.com/" target="_blank">
+        <img data-image="./images/arykai-hover.png" class="popup-items w-full rounded-[20px] object-cover object-center h-[75vh]" src="./images/arykai-ui.png"
+          alt=""></a>
       </div>
       <div class="page4-img2 w-full md:w-[45%] text-right">
-        <div class="text-3xl md:text-[6vh] leading-snug md:leading-[4vh] font-genos font-black mb-6 md:mb-10">
-          <h3 class="text-work">Work</h3>
-          <h3>Work</h3>
-          <h3 class="text-work">Work</h3>
+        <div class="text-3xl md:text-[6vh] leading-snug md:leading-[4vh] font-genos font-black mb-6 md:mb-10 ">
+          <h3 class="text-work">Live Projects</h3>
+          <h3>Live Projects</h3>
+          <h3 class="text-work">Live Projects</h3>
         </div>
-        <img data-image="https://images.unsplash.com/photo-1751647670943-74e2045c942a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D" class="popup-items w-full rounded-[20px]" src="https://images.unsplash.com/photo-1750126833705-ba98013f16f3?w=400"
-          alt="">
+        <a href="https://justfit.in/" target="_blank">
+        <img data-image="./images/justfit-hover.png" class="popup-items w-full rounded-[20px] object-cover object-center" src="./images/justfit-ui.png"
+          alt=""></a>
+          
       </div>
     </div>
 
     <div class="page4-img3 w-full md:w-[70%] m-auto my-10 md:my-20">
-      <img data-image="https://images.unsplash.com/photo-1751647670943-74e2045c942a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D" class="popup-items w-full rounded-[20px]" src="https://images.unsplash.com/photo-1746105839114-fbc9c81fcb17?w=400"
-        alt="">
+      <a href="https://db-bricks.com/" target="_blank">
+      <img data-image="./images/db-bricks-hover.png" class="popup-items w-full rounded-[20px] object-cover object-center" src="./images/db-bricks-ui.png"
+        alt=""></a>
     </div>
 
     <div class="page4-img4 flex flex-col md:flex-row justify-between gap-6 w-full md:w-[90%] m-auto">
       <div class="w-full md:w-[50%]">
-        <img data-image="https://images.unsplash.com/photo-1751647670943-74e2045c942a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D" class="popup-items w-full rounded-[20px]" src="https://images.unsplash.com/photo-1746311507414-bce6f67abb44?w=400"
-          alt="">
+        <a href="https://tasktree-qctd.onrender.com/">
+        <img data-image="./images/tasktree-down-hover.png" class="popup-items w-full rounded-[20px] object-cover object-center" src="./images/tasktree-down-ui.png"
+          alt=""></a>
       </div>
       <div class="page4-img5 w-full md:w-[50%]">
-        <img data-image="https://images.unsplash.com/photo-1751647670943-74e2045c942a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D" class="popup-items w-full rounded-[20px]" src="https://images.unsplash.com/photo-1749318398976-5a9b45307aae?w=400"
-          alt="">
+        <a href="https://geosight360.com/">
+        <img data-image="./images/geosight360-ui.png" class="popup-items w-full rounded-[20px] object-cover object-center" src="./images/geosight-down-ui.png "
+          alt=""></a>
       </div>
     </div>
   </section>
@@ -210,25 +223,25 @@
       class="hoverdiv bg-cover bg-center bg-no-repeat hidden w-[25%] h-[60%] top-[50px] md:top-[0px] rounded-[10px] md:left-[70px] md:w-[20vw] md:h-[20vw] bg-white absolute z-10">
     </div>
     <div class="page5 w-full md:w-[90%] m-auto text-center">
-      <h5 class="mb-5">More Works</h5>
+      <h5 class="mb-5">More Projects</h5>
       <div class="inline-block space-y-4 md:space-y-0 md:space-x-6">
         <h3
-          data-image="https://images.unsplash.com/photo-1499428665502-503f6c608263?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8"
+          data-image="./images/todolist.png"
           id="project-elem"
           class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200 md:ml-5"><a
-            href="#">Project 1</a></h3>
+            href="https://github.com/PranitWork/todolist-react">TodoList</a></h3>
         <h3
-          data-image="https://images.unsplash.com/photo-1749200622589-86f652f26761?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8"
+          data-image="./images/github-searcher.png"
           id="project-elem" class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200"><a
-            href="#">Project 2</a></h3>
+            href="https://pranitwork.github.io/Github-p-Searcher/">GitHub Profile Search</a></h3>
         <h3
-          data-image="https://plus.unsplash.com/premium_photo-1686133832542-e95f2a6d953e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8"
+          data-image="./images/twink-project.png"
           id="project-elem" class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200"><a
-            href="#">Project 3</a></h3>
+            href="https://pranitwork.github.io/twink-Project/">Twink Project Ui</a></h3>
         <h3
-          data-image="https://images.unsplash.com/photo-1750306957077-b74e45fe1819?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNnx8fGVufDB8fHx8fA%3D%3D"
+          data-image="./images/js-projects.png"
           id="project-elem" class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200"><a
-            href="#">Project 4</a></h3>
+            href="https://github.com/PranitWork/javascript-Projects">Javascript Mini Projects</a></h3>
       </div>
     </div>
   </section>
@@ -247,7 +260,7 @@
   </section>
 
   <!-- ✅ Responsive About -->
-  <section class="w-full my-20 px-4">
+  <section id="about" class="w-full my-20 px-4">
     <div class="page6 w-full md:w-[90%] m-auto">
       <div class="text-3xl md:text-[6vh] leading-snug md:leading-[4vh] font-genos font-black mb-10">
         <h3 class="text-work">About Me</h3>
@@ -269,7 +282,7 @@
         </div>
         <div class="page6-content w-full md:w-[50%] text-right">
           <button class="py-2 px-5 border rounded-full hover:bg-white hover:text-black duration-200 ease-in">
-            <a href="#">Download My CV 📃</a>
+            <a href="https://drive.google.com/file/d/1ccsH0zkAz0pe-kwePHWgc-NXCyI95A2Y/view?usp=sharing" target="_blank">Download My CV 📃</a>
           </button>
         </div>
       </div>
@@ -287,11 +300,11 @@
       <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-5 mt-10">
         <button
           class="text-xl md:text-[3vh] py-2 px-5 border-[3px] rounded-full hover:bg-white hover:text-black duration-200 ease-in">
-          <a href="#">Message</a>
+          <a href="https://wa.me/918975205712">Message</a>
         </button>
-        <button
+        <button id="schedulegmeet"
           class="text-xl md:text-[3vh] py-2 px-5 border-[3px] rounded-full hover:bg-white hover:text-black duration-200 ease-in">
-          <a href="#">Discuss Project</a>
+          Discuss Project
         </button>
       </div>
       <div class="flex flex-col md:flex-row justify-center items-center mt-10 gap-4 md:gap-7 text-lg md:text-[3vh]">
@@ -308,6 +321,13 @@
     </div>
   </section>
 
+
+
+
+  <!-- Calendly inline widget begin -->
+
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Calendly inline widget end -->
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
