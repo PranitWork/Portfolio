@@ -2,376 +2,759 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pranit Daphale</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pranit Daphale – Portfolio</title>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts: Titillium Web -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Varta:wght@300..700&display=swap" rel="stylesheet">
-
+    href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&family=Anta&family=Genos:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Varta:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
   <!-- Tailwind Config -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            titilliumWeb: ['"Titillium Web"', 'sans-serif'],
-            anta: ["Anta", "sans-serif"],
-            genos: ["Genos", "sans-serif"],
-            varta: ["Varta", "sans-serif"],
+            titilliumWeb: ['"Plus Jakarta Sans"', "sans-serif"],
+            anta: ['"Sora"', "sans-serif"],
+            genos: ['"Inter"', "sans-serif"],
+            varta: ['"Manrope"', "sans-serif"],
           },
           colors: {
-            primaryBG: "#000000",
+            primaryBG: "#020617",
             yelloworange: "#FFB22C",
             purpalfade: "#8E7DBE",
             fadeGreen: "#90C67C",
-            fadegray: "#262626",
+            fadegray: "#111827",
             work: "#7F8CAA",
-          }
-        }
-      }
-    }
+          },
+          boxShadow: {
+            card: "0 18px 45px rgba(15,23,42,0.7)",
+          },
+        },
+      },
+    };
   </script>
 </head>
 
-<body class="font-anta scroll-smooth overflow-x-hidden text-white bg-primaryBG text-gray-800">
+<body class="font-anta scroll-smooth overflow-x-hidden text-white bg-primaryBG">
 
-  <!-- schedule the call -->
-  <div id="schedule-open" class="hidden absolute fixed bg-[#fffff] backdrop-blur-3xl w-full h-full z-[10]">
-    <div class="w-full h-full relative">
-        <i id="schedule-close" class="ri-close-line absolute right-5 top-5 px-2 text-[3vh] bg-black text-white md:right-20 md:top-10 md:text-[4vh] py-1 md:px-3 md:bg-white md:text-black rounded-full z-[99999]"></i>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/pranitworkspace/30min" style="min-width:320px;height:700px;"></div>
+  <!-- ============== Schedule Call Modal ============== -->
+  <div id="schedule-open"
+    class="hidden fixed inset-0 bg-black/60 backdrop-blur-xl z-[60] flex items-center justify-center">
+    <div class="w-full max-w-4xl h-[80vh] bg-slate-900/90 border border-slate-700 rounded-3xl relative overflow-hidden">
+      <i id="schedule-close"
+        class="ri-close-line absolute right-4 top-4 text-2xl md:text-3xl p-2 bg-white text-black rounded-full cursor-pointer z-[999]"></i>
+      <div class="calendly-inline-widget h-full" data-url="https://calendly.com/pranitworkspace/30min"
+        style="min-width:320px;height:100%;"></div>
     </div>
   </div>
 
-  <nav class="flex flex-wrap items-center justify-between p-6 relative">
-    <!-- LOGO LEFT -->
-    <div class="logo flex-shrink-0">
-      <h1 class="hover:text-purpalfade ease-linear duration-200 cursor-pointer text-xl md:text-2xl">
-        Pranit Daphale
-      </h1>
-    </div>
+  <!-- Floating gradient blobs -->
+  <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute -top-40 -left-20 w-[40rem] h-[40rem] bg-purpalfade/25 blur-3xl rounded-full"></div>
+    <div class="absolute top-40 right-[-10rem] w-[35rem] h-[35rem] bg-yelloworange/20 blur-3xl rounded-full"></div>
+    <div class="absolute bottom-[-15rem] left-10 w-[30rem] h-[30rem] bg-fadeGreen/15 blur-3xl rounded-full"></div>
+  </div>
 
+  <!-- ============== Navbar ============== -->
+  <nav class="w-full px-5 md:px-10 py-5 sticky top-0 z-40 backdrop-blur-xl bg-black/40 border-b border-white/5">
 
-
-    <!-- ✅ Hamburger toggle RIGHT (mobile only) -->
-    <button id="menu-toggle" class="md:hidden text-3x ml-auto">
-      &#9776; <!-- Unicode hamburger -->
-    </button>
-
-    <!-- Nav Links (center for desktop, full for mobile) -->
-    <div id="menu" class="w-full  md:w-auto hidden md:flex md:items-center md:space-x-9 mt-4 md:mt-0">
-      <ul class="flex flex-col md:flex-row gap-4 md:gap-9 items-center underline-offset-4 underline decoration-2">
-        <li><a class="hover:text-yelloworange ease-linear duration-200" href="#work">Projects</a></li>
-        <li><a class="hover:text-yelloworange ease-linear duration-200" href="#about">About</a></li>
-        <li class="relative group text-center md:text-left">
-          <a class="hover:text-yelloworange ease-linear duration-200 cursor-pointer" href="#">Socials</a>
-          <ul
-            class="md:absolute w-full ml-[35px] md:ml-[0px] text-left md:w-[130px] pt-3 md:left-0 mt-0 hidden group-hover:block md:bg-primaryBG text-white shadow-lg rounded-md md:p-2 md:space-y-1 ">
-            <li class="block px-4 py-1 hover:text-fadeGreen"><a href="https://www.linkedin.com/in/pranitdaphale/" target="_blank">LinkedIn</a></li>
-            <li class="block px-4 py-1 hover:text-fadeGreen"><a href="https://www.instagram.com/pranit.daphale/" target="_blank">Instagram</a></li>
-            <li class="block px-4 py-1 hover:text-fadeGreen"><a href="https://github.com/PranitWork" target="_blank">Github</a></li>
-          </ul>
-        </li>
-      </ul>
-      <!-- CTA BUTTON RIGHT -->
-      <div class="Navbtn ml-auto hidden md:block">
-        <button id="schedulegmeet"
-          class="py-2 px-5 border rounded-full text-sm md:text-[2vh] hover:bg-fadeGreen hover:border-black ease-linear duration-200">
-          Book A Call
-        </button>
-      </div>
-
-      <!-- ✅ CTA BUTTON inside nav for mobile -->
-      <div class="Navbtn md:hidden mt-4">
-        <button id="schedulegmeet"
-          class="py-2 px-5 border w-full rounded-full text-sm hover:bg-fadeGreen hover:border-black ease-linear duration-200">
-          Book A Call
-        </button>
-      </div>
-    </div>
-  </nav>
-
-<section class="imagepopup w-[40vh] h-[40vh] bg-white absolute rounded-[10px] hidden bg-cover bg-center pointer-events-none z-[999]">
-</section>
-
-  <section class="w-full px-4 ">
-    <div class="Home mt-8 m-auto text-center">
-      <p class="text-base inline-block md:text-lg">&#128079 Namaste! I am <span class="text-fadeGreen"> Pranit Daphale</span></p>
-      <h1 class="font-titilliumWeb font-black text-4xl md:text-[10vh] mt-7 leading-tight md:leading-[13vh]">
-        Creative <span class="text-yelloworange"> Designing</span>
-        <span class="font-varta text-5xl md:text-[17vh]">&</span>
-        <span class="text-5xl md:text-[15vh]">
-          <span class="text-purpalfade">Creative</span> Engineering
-        </span>
-      </h1>
-      <img class="w-full max-w-[80vh] mx-auto mt-4 md:mt-[-12vh] z-10" src="./images/pranit-daphale.png" alt="">
-    </div>
-  </section>
-
-  <section class="page2 w-full mt-10">
-    <div class="w-[90%] m-auto flex flex-col md:flex-row justify-between gap-10">
-      <!-- Text Block -->
-      <div class="page2-content w-full md:w-[50%] h-auto md:h-[60vh] flex items-center">
-        <h1 class="text-xl md:text-[4vh] w-full md:w-[50vh] 2xl:leading-[35px]">
-          I create <span class="text-yelloworange">unconventional</span> yet
-          functional & visually pleasing interfaces for the
-          <span class="text-purpalfade">mobile</span> and
-          <span class="text-purpalfade">web</span>.
+    <!-- TOP BAR -->
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <div class="logo flex items-center gap-2">
+        <h1 class="hover:text-purpalfade cursor-pointer text-lg md:text-2xl font-titilliumWeb font-black">
+          Pranit Daphale
         </h1>
       </div>
 
-      <!-- Images Block -->
-      <div class=" w-full md:w-[50%] relative flex md:block justify-center">
-        <!-- For mobile, stack images normally; absolute only on md+ -->
-        <div class="page2-images relative md:static flex flex-col md:block items-center">
-          <a href="https://geosight360.com/" target="_blank">
-          <img data-image="./images/geosight360-ui.png"
-            class="cursor-pointer popup-items shadow-[-8px_8px_1px_1px_rgba(0,_0,_0,_0.35)] w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[3deg] duration-200 ease-linear mb-4 md:mb-0 md:absolute"
-            src="./images/geosight360.jpg" alt="" /></a>
-            <a href="https://tasktree-qctd.onrender.com/login"  target="_blank">
-          <img data-image="./images/tasktree-ui.png"
-            class="cursor-pointer popup-items shadow-[-8px_8px_1px_1px_rgba(0,_0,_0,_0.35)] w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[13deg] duration-200 ease-linear mb-4 md:mb-0 md:absolute md:ml-10 rotate-0 md:rotate-[10deg]"
-            src="./images/task-tree.jpg" alt="" /></a>
-            <a href="https://recipe-management-system-722w.onrender.com/"  target="_blank">
-          <img data-image="./images/recipe-ui.png"
-            class="cursor-pointer popup-items shadow-[-8px_8px_1px_1px_rgba(0,_0,_0,_0.35)] w-[250px] md:w-[50vh] h-[auto] md:h-[60vh] rounded-[3vh] bg-white hover:rotate-[23deg] duration-200 ease-linear md:absolute md:ml-20 rotate-0 md:rotate-[20deg]"
-            src="./images/recipe-management-system.jpg" alt="" /></a>
+      <!-- Hamburger -->
+      <button id="menu-toggle" class="md:hidden text-3xl">
+        <i class="ri-menu-line"></i>
+      </button>
+
+      <!-- DESKTOP MENU -->
+      <div id="desktop-menu" class="hidden md:flex items-center space-x-10">
+        <ul class="flex gap-8 items-center font-varta text-sm md:text-base">
+          <li><a class="hover:text-yelloworange duration-200" href="#work">Projects</a></li>
+          <li><a class="hover:text-yelloworange duration-200" href="#about">About</a></li>
+
+          <li class="relative group cursor-pointer">
+
+            <!-- Trigger -->
+            <span class="hover:text-yelloworange flex items-center gap-1">
+              Socials <i class="ri-arrow-down-s-line"></i>
+            </span>
+
+            <!-- Invisible hover bridge (prevents flicker) -->
+            <div class="absolute left-0 top-full w-full h-3"></div>
+
+            <!-- Dropdown -->
+            <ul class="absolute top-[calc(100%+0.5rem)] left-0 
+           hidden group-hover:block
+           bg-slate-950/90 border border-white/10 rounded-xl 
+           p-3 w-[160px] space-y-2
+           z-50">
+              <li><a class="hover:text-fadeGreen" href="https://www.linkedin.com/in/pranitdaphale/"
+                  target="_blank">LinkedIn</a></li>
+              <li><a class="hover:text-fadeGreen" href="https://www.instagram.com/pranit.daphale/"
+                  target="_blank">Instagram</a></li>
+              <li><a class="hover:text-fadeGreen" href="https://github.com/PranitWork" target="_blank">GitHub</a></li>
+            </ul>
+
+          </li>
+
+
+        </ul>
+
+        <button id="schedulegmeet"
+          class="py-2 px-5 border border-white/15 rounded-full hover:bg-fadeGreen hover:border-black hover:text-black duration-200">
+          Book a Call
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU DROPDOWN -->
+    <div id="mobile-menu"
+      class="hidden flex-col mt-4 space-y-5 bg-black/60 p-5 rounded-xl md:hidden border border-white/10">
+
+      <ul class="flex flex-col gap-4 font-varta text-base">
+        <li><a class="hover:text-yelloworange duration-200" href="#work">Projects</a></li>
+        <li><a class="hover:text-yelloworange duration-200" href="#about">About</a></li>
+
+        <li>
+          <details>
+            <summary class="cursor-pointer hover:text-yelloworange flex items-center gap-1">
+              Socials <i class="ri-arrow-down-s-line text-lg"></i>
+            </summary>
+            <ul class="mt-3 pl-3 space-y-2 text-sm text-gray-300">
+              <li><a class="hover:text-fadeGreen" href="https://www.linkedin.com/in/pranitdaphale/"
+                  target="_blank">LinkedIn</a></li>
+              <li><a class="hover:text-fadeGreen" href="https://www.instagram.com/pranit.daphale/"
+                  target="_blank">Instagram</a></li>
+              <li><a class="hover:text-fadeGreen" href="https://github.com/PranitWork" target="_blank">GitHub</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+
+      <button id="schedulegmeet"
+        class="py-2 px-5 border border-white/15 w-full rounded-full hover:bg-fadeGreen hover:border-black hover:text-black duration-200">
+        Book a Call
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- Image popup for hover -->
+  <section
+    class="imagepopup w-[40vh] h-[40vh] bg-white/90 absolute rounded-[18px] hidden bg-cover bg-center pointer-events-none z-[999] shadow-card border border-black/5">
+  </section>
+
+  <!-- ============== HERO ============== -->
+  <section class="w-full px-5 md:px-10 pt-10 md:pt-16">
+    <div class="Home max-w-6xl mx-auto grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] gap-10 items-center">
+      <!-- Left Text -->
+      <div class="space-y-6 md:space-y-7">
+        <p
+          class="inline-flex items-center gap-2 text-xs md:text-sm bg-white/5 border border-white/10 rounded-full px-4 py-2">
+          <span class="text-lg">👋</span>
+          <span>Namaste! I am <span class="text-fadeGreen font-semibold">Pranit Daphale</span></span>
+        </p>
+
+        <h1
+          class="font-titilliumWeb font-black text-[2.3rem] leading-snug md:text-[3.8rem] md:leading-[4.2rem] tracking-tight">
+          Designing <span class="text-yelloworange">delightful</span> experiences<br />
+          & engineering <span class="text-purpalfade">reliable</span> products.
+        </h1>
+
+        <p class="text-sm md:text-base text-slate-300 max-w-xl">
+          Full Stack Developer & Product Designer obsessed with building useful, beautiful interfaces –
+          from marketing websites to full-blown SaaS products.
+        </p>
+
+        <div class="flex flex-wrap gap-3 md:gap-4 items-center">
+          <button id="schedulegmeet"
+            class="inline-flex items-center gap-2 bg-white text-black px-5 py-2.5 rounded-full text-sm md:text-base font-medium hover:bg-fadeGreen hover:text-black transition shadow-card">
+            <span>Discuss a Project</span>
+            <i class="ri-sparkling-2-line text-lg"></i>
+          </button>
+
+          <a href="#work"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/25 text-xs md:text-sm hover:border-fadeGreen hover:bg-fadeGreen/10 transition">
+            <span>View Selected Work</span>
+            <i class="ri-arrow-down-line text-base"></i>
+          </a>
         </div>
+
+        <div class="flex flex-wrap gap-6 mt-4 md:mt-6 text-xs md:text-sm text-slate-300">
+          <div>
+            <p class="text-slate-400 uppercase tracking-[0.16em] text-[0.7rem] mb-1">Core Stack</p>
+            <p>React, Next.js, Node, MongoDB, MySQL</p>
+          </div>
+          <div>
+            <p class="text-slate-400 uppercase tracking-[0.16em] text-[0.7rem] mb-1">Design & No-code</p>
+            <p>UI/UX, WordPress, Shopify, Web Experiences</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Image -->
+      <div class="relative flex justify-center items-center md:justify-end">
+        <div
+          class="absolute inset-0 blur-3xl bg-gradient-to-br from-yelloworange/30 via-purpalfade/40 to-fadeGreen/25 rounded-[3rem] scale-110 opacity-80">
+        </div>
+        <div
+          class="relative w-[85%] md:w-[90%] max-w-[360px] aspect-[4/5] rounded-[2.5rem] border border-white/15 bg-gradient-to-b from-slate-900/90 via-slate-900/70 to-black/90 shadow-card overflow-hidden">
+          <img class="w-full h-full object-contain pt-4 md:pt-8 px-3 md:px-4" src="./images/pranit-daphale.png"
+            alt="Pranit Daphale" />
+          <div
+            class="absolute bottom-3 left-3 right-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl px-4 py-2.5 flex items-center justify-between">
+            <div>
+              <p class="text-[0.7rem] uppercase tracking-[0.16em] text-slate-400">Role</p>
+              <p class="text-xs md:text-sm font-semibold">Full Stack Dev & Product Designer</p>
+            </div>
+            <div class="flex items-center gap-1 text-[0.7rem] text-slate-300">
+              <i class="ri-macbook-line text-base"></i>
+              <span>Building & Shipping</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- scroll indicator -->
+    <div class="flex justify-center mt-10 md:mt-14">
+      <div class="flex flex-col items-center gap-2 text-xs text-slate-400">
+        <div class="w-[1px] h-8 bg-gradient-to-b from-transparent via-slate-500 to-transparent animate-pulse"></div>
+        <span>Scroll to explore</span>
       </div>
     </div>
   </section>
 
+  <!-- ============== Page 2 – Intro + Hero Projects Stack ============== -->
+  <section class="page2 w-full mt-16 md:mt-24 px-5 md:px-10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-10">
+      <!-- Text Block -->
+      <div class="page2-content w-full md:w-[50%] flex items-center">
+        <h2 class="text-xl md:text-3xl font-varta font-semibold leading-relaxed">
+          I craft <span class="text-yelloworange">unconventional</span> yet functional experiences for
+          <span class="text-purpalfade">web</span> & <span class="text-purpalfade">mobile</span>,
+          blending <span class="text-fadeGreen">design thinking</span> with
+          <span class="underline decoration-yelloworange/60">engineering discipline</span>.
+        </h2>
+      </div>
 
+
+    </div>
+  </section>
+
+  <!-- ============== Sticky UX text ============== -->
   <section class="sticky-content flex w-full h-[100vh] items-center overflow-x-hidden">
-      <h1 class="shrink-0 text-[40vh]">USER-EXPERIANCE</h1>
+    <h1 class="shrink-0 text-[30vh] md:text-[40vh] font-genos font-extrabold tracking-tight text-white/5">
+      USER EXPERIENCE
+    </h1>
   </section>
 
-  <!-- ✅ Responsive Service Block -->
-  <section class="w-full my-10 px-4">
-    <div class="page3 w-full md:w-[90%] m-auto relative">
+  <!-- ============== Services Tagline ============== -->
+  <section class="w-full my-10 md:my-16 px-5 md:px-10">
+    <div class="page3 max-w-6xl mx-auto relative">
       <div
-        class="page3-info-i p-3 border bg-fadegray ml-4 inline-block rounded-full absolute hover:bg-white hover:text-black duration-200 ease-in">
-        <i class="ri-arrow-right-down-line text-[3vh]"></i>
+        class="page3-info-i p-3 border border-white/20 bg-fadegray inline-flex rounded-full absolute -top-7 left-6 md:left-10 hover:bg-white hover:text-black duration-200 ease-in">
+        <i class="ri-arrow-right-down-line text-2xl"></i>
       </div>
       <div
-        class="page3-info-content px-6 py-8 border inline-block rounded-full mt-8 w-full md:w-[40%] hover:bg-white hover:text-black duration-200 ease-in">
-        <p>Things I can help you with.</p>
-        <h2>WEB & MOBILE / UI&UX / BRANDING / FRONT-END DEVELOPMENT</h2>
+        class="page3-info-content px-6 py-5 md:px-8 md:py-7 border border-white/15 inline-flex flex-col md:flex-row items-start md:items-center gap-3 rounded-[999px] w-full md:w-[70%] bg-black/40 backdrop-blur-md hover:bg-white hover:text-black duration-200 ease-in">
+        <p class="text-xs md:text-sm uppercase tracking-[0.18em] text-slate-300">
+          Things I can help you with
+        </p>
+        <h2 class="md:ml-6 text-sm md:text-base font-varta font-medium">
+          Web & Mobile Experiences · UI/UX Design · SaaS Products · Branding · Front-end Engineering
+        </h2>
       </div>
     </div>
   </section>
 
-  <!-- ✅ Responsive Work Section -->
-<section id="work" class="page4 w-full px-4">
-  <div class="page4-img1 w-full md:w-[90%] m-auto flex flex-col md:flex-row justify-between items-center gap-10">
-    <div class="w-full md:w-[45%] relative group">
-      <!-- Hidden by default, visible on hover -->
-      <div class="absolute w-full h-10 left-0 top-0 bg-white text-black text-center z-50 pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        Shopify
-      </div>
-      <a href="https://arykai.com/" target="_blank">
-        <img data-image="./images/arykai-hover.png" class="popup-items w-full rounded-[20px] object-cover object-center h-[75vh]" src="./images/arykai-ui.png" alt="">
-      </a>
-    </div>
-
-    <div class="page4-img2 w-full md:w-[45%] text-right ">
-      <div class="text-3xl md:text-[6vh] leading-snug md:leading-[4vh] font-genos font-black mb-6 md:mb-10">
-        <h3 class="text-work">Live Projects</h3>
-        <h3>Live Projects</h3>
-        <h3 class="text-work">Live Projects</h3>
-      </div>
-
-      <div class="relative group">
-        <div class="absolute w-full h-10 left-0 top-0 bg-white text-black text-center z-50 pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          wordpress
+  <!-- ============== PROJECTS ============== -->
+  <section id="work" class="page4 w-full px-5 md:px-10 py-10 md:py-16">
+    <div class="max-w-6xl mx-auto">
+      <!-- Section Title -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+        <div>
+          <p class="uppercase text-[0.7rem] tracking-[0.2em] text-slate-400 mb-2">Selected Work</p>
+          <h2 class="text-2xl md:text-4xl font-genos font-black">
+            Projects & Products
+          </h2>
         </div>
-        <a href="https://justfit.in/" target="_blank">
-          <img data-image="./images/justfit-hover.png" class="popup-items w-full rounded-[20px] object-cover object-center" src="./images/justfit-ui.png" alt="">
-        </a>
+        <p class="text-xs md:text-sm text-slate-300 max-w-md">
+          A mix of live client work, SaaS products, and experimental tools – shipped from idea to production.
+        </p>
       </div>
-    </div>
-  </div>
 
-  <div class="page4-img3 w-full md:w-[70%] m-auto my-10 md:my-20 relative group">
-    <div class="absolute w-full h-10 left-0 top-0 bg-white text-black text-center z-50 pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-      wordpress
-    </div>
-    <a href="https://db-bricks.com/" target="_blank">
-      <img data-image="./images/db-bricks-hover.png" class="popup-items w-full rounded-[20px] object-cover object-center" src="./images/db-bricks-ui.png" alt="">
-    </a>
-  </div>
+      <!-- ===== CLIENT WEBSITES ===== -->
+      <div class="mb-12 md:mb-16">
+        <div class="flex items-center justify-between gap-3 mb-5">
+          <h3 class="text-lg md:text-xl font-varta font-semibold flex items-center gap-2">
+            <span class="w-7 h-[2px] bg-yelloworange"></span> Client Websites
+          </h3>
+          <p class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-500">WordPress · Shopify · Brand Sites</p>
+        </div>
 
-  <div class="page4-img4 flex flex-col md:flex-row justify-between gap-6 w-full md:w-[90%] m-auto">
-    <div class="w-full md:w-[50%] relative group">
-      <div class="absolute w-full h-10 left-0 top-0 bg-white text-black text-center z-50 pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        ReactJS
+        <div class="grid md:grid-cols-2 gap-7">
+          <!-- Arykai -->
+          <article
+            class="project-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card">
+            <div class="relative overflow-hidden">
+              <div
+                class="absolute left-3 top-3 z-20 px-3 py-1 rounded-full text-[0.7rem] bg-black/70 border border-white/15">
+                Shopify
+              </div>
+              <a href="https://arykai.com/" target="_blank">
+                <img data-image="./images/arykai-hover.png"
+                  class="popup-items w-full h-[260px] object-cover object-center transition-transform duration-500 group-hover:scale-[1.06]"
+                  src="./images/arykai-ui.png" alt="Arykai" />
+              </a>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+            </div>
+            <div class="p-4 md:p-5 flex items-center justify-between gap-3">
+              <div>
+                <h4 class="font-varta font-semibold text-base md:text-lg">Arykai</h4>
+                <p class="text-xs md:text-sm text-slate-400">Premium skincare Shopify storefront.</p>
+              </div>
+              <a href="https://arykai.com/" target="_blank"
+                class="rounded-full border border-white/20 p-2 hover:bg-white hover:text-black transition">
+                <i class="ri-external-link-line text-sm"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Justfit -->
+          <article
+            class="project-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card">
+            <div class="relative overflow-hidden">
+              <div
+                class="absolute left-3 top-3 z-20 px-3 py-1 rounded-full text-[0.7rem] bg-black/70 border border-white/15">
+                WordPress
+              </div>
+              <a href="https://justfit.in/" target="_blank">
+                <img data-image="./images/justfit-hover.png"
+                  class="popup-items w-full h-[260px] object-cover object-center transition-transform duration-500 group-hover:scale-[1.06]"
+                  src="./images/justfit-ui.png" alt="Justfit" />
+              </a>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+            </div>
+            <div class="p-4 md:p-5 flex items-center justify-between gap-3">
+              <div>
+                <h4 class="font-varta font-semibold text-base md:text-lg">Justfit</h4>
+                <p class="text-xs md:text-sm text-slate-400">Fitness & wellness brand presence.</p>
+              </div>
+              <a href="https://justfit.in/" target="_blank"
+                class="rounded-full border border-white/20 p-2 hover:bg-white hover:text-black transition">
+                <i class="ri-external-link-line text-sm"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- DB Bricks -->
+          <article
+            class="project-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card md:col-span-2">
+            <div class="relative overflow-hidden">
+              <div
+                class="absolute left-3 top-3 z-20 px-3 py-1 rounded-full text-[0.7rem] bg-black/70 border border-white/15">
+                WordPress
+              </div>
+              <a href="https://db-bricks.com/" target="_blank">
+                <img data-image="./images/db-bricks-hover.png"
+                  class="popup-items w-full h-[260px] md:h-[320px] object-cover object-center transition-transform duration-500 group-hover:scale-[1.04]"
+                  src="./images/db-bricks-ui.png" alt="DB Bricks" />
+              </a>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+            </div>
+            <div class="p-4 md:p-5 flex items-center justify-between gap-3">
+              <div>
+                <h4 class="font-varta font-semibold text-base md:text-lg">DB Bricks</h4>
+                <p class="text-xs md:text-sm text-slate-400">Industrial brick manufacturer web presence.</p>
+              </div>
+              <a href="https://db-bricks.com/" target="_blank"
+                class="rounded-full border border-white/20 p-2 hover:bg-white hover:text-black transition">
+                <i class="ri-external-link-line text-sm"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Geosight360 -->
+          <article
+            class="project-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card">
+            <div class="relative overflow-hidden">
+              <div
+                class="absolute left-3 top-3 z-20 px-3 py-1 rounded-full text-[0.7rem] bg-black/70 border border-white/15">
+                WordPress · Brand
+              </div>
+              <a href="https://geosight360.com/" target="_blank">
+                <img data-image="./images/geosight360-ui.png"
+                  class="popup-items w-full h-[260px] object-cover object-center transition-transform duration-500 group-hover:scale-[1.06]"
+                  src="./images/geosight-down-ui.png" alt="Geosight360" />
+              </a>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+            </div>
+            <div class="p-4 md:p-5 flex items-center justify-between gap-3">
+              <div>
+                <h4 class="font-varta font-semibold text-base md:text-lg">Geosight360</h4>
+                <p class="text-xs md:text-sm text-slate-400">Geospatial engineering & surveying brand site.</p>
+              </div>
+              <a href="https://geosight360.com/" target="_blank"
+                class="rounded-full border border-white/20 p-2 hover:bg-white hover:text-black transition">
+                <i class="ri-external-link-line text-sm"></i>
+              </a>
+            </div>
+          </article>
+        </div>
       </div>
-      <a href="https://tasktree-qctd.onrender.com/">
-        <img data-image="./images/tasktree-down-hover.png" class="popup-items w-full rounded-[20px] object-cover object-center" src="./images/tasktree-down-ui.png" alt="">
-      </a>
-    </div>
 
-    <div class="page4-img5 w-full md:w-[50%] relative group">
-      <div class="absolute w-full h-10 left-0 top-0 bg-white text-black text-center z-50 pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        wordpress
+      <!-- ===== SAAS & PRODUCTS ===== -->
+      <div class="mb-12 md:mb-16">
+        <div class="flex items-center justify-between gap-3 mb-5">
+          <h3 class="text-lg md:text-xl font-varta font-semibold flex items-center gap-2">
+            <span class="w-7 h-[2px] bg-fadeGreen"></span> SaaS & Products
+          </h3>
+          <p class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-500">MERN · Next.js · AI</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-7">
+          <!-- Swarai SaaS -->
+          <article
+            class="project-card group relative bg-gradient-to-b from-slate-900 to-slate-950 border border-emerald-400/40 rounded-3xl overflow-hidden shadow-card">
+            <div class="p-5 pb-4 flex flex-col gap-3 h-full">
+              <div class="flex items-center justify-between gap-2">
+                <span
+                  class="text-[0.7rem] px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/40">
+                  SaaS · AI
+                </span>
+                <span class="text-[0.7rem] text-slate-400 flex items-center gap-1">
+                  <i class="ri-brain-line text-sm"></i> Swarai
+                </span>
+              </div>
+              <a href="https://www.swarai.vercel.app/" target="_blank">
+                <img data-image="./images/swarai-dashboard.png"
+                  class="popup-items w-full h-[220px] object-cover object-center transition-transform duration-500 group-hover:scale-[1.06]"
+                  src="./images/swarai-home.png" alt="Nyandesk" />
+              </a>
+              <h4 class="font-varta font-semibold text-base md:text-lg mt-1">Swarai – AI Interview Assistant</h4>
+              <p class="text-xs md:text-sm text-slate-300">
+                A SaaS platform that helps candidates practice & improve interviews using AI, real-time feedback and
+                structured sessions.
+              </p>
+
+              <ul class="flex flex-wrap gap-2 mt-2 text-[0.65rem] text-slate-300">
+                <li class="px-2 py-1 rounded-full border border-white/10">Next.js</li>
+                <li class="px-2 py-1 rounded-full border border-white/10">OpenAI</li>
+                <li class="px-2 py-1 rounded-full border border-white/10">SaaS</li>
+              </ul>
+
+              <div class="mt-auto pt-3 flex justify-between items-center">
+                <a href="https://www.swarai.vercel.app/" target="_blank"
+                  class="inline-flex items-center gap-1 text-[0.8rem] text-emerald-300 hover:text-white">
+                  Open live product
+
+                  <i class="ri-arrow-right-up-line text-sm"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Nyandesk -->
+          <article
+            class="project-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card">
+            <div class="relative overflow-hidden">
+              <div
+                class="absolute left-3 top-3 z-20 px-3 py-1 rounded-full text-[0.7rem] bg-black/70 border border-white/15">
+                MERN Stack
+              </div>
+              <a href="https://nyandesk.vercel.app/" target="_blank">
+                <img data-image="./images/nyandesk.png"
+                  class="popup-items w-full h-[220px] object-cover object-center transition-transform duration-500 group-hover:scale-[1.06]"
+                  src="./images/nyandesk.png" alt="Nyandesk" />
+              </a>
+            </div>
+            <div class="p-4 md:p-5">
+              <h4 class="font-varta font-semibold text-base md:text-lg">Nyandesk</h4>
+              <p class="text-xs md:text-sm text-slate-300">
+                A modern productivity / workspace tool built on MERN stack.
+              </p>
+              <div class="flex justify-between items-center mt-3">
+                <p class="text-[0.7rem] text-slate-400">MERN · Dashboard</p>
+                <a href="https://nyandesk.vercel.app/" target="_blank"
+                  class="rounded-full border border-white/20 p-2 hover:bg-white hover:text-black transition">
+                  <i class="ri-external-link-line text-sm"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- BicycleHub -->
+          <article
+            class="project-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card">
+            <div class="relative overflow-hidden">
+              <div
+                class="absolute left-3 top-3 z-20 px-3 py-1 rounded-full text-[0.7rem] bg-black/70 border border-white/15">
+                MERN Stack
+              </div>
+              <a href="https://bicyclehub-pranit.vercel.app/" target="_blank">
+                <img data-image="./images/bicycleHub.png"
+                  class="popup-items w-full h-[220px] object-cover object-center transition-transform duration-500 group-hover:scale-[1.06]"
+                  src="./images/bicycleHub.png" alt="BicycleHub" />
+              </a>
+            </div>
+            <div class="p-4 md:p-5">
+              <h4 class="font-varta font-semibold text-base md:text-lg">BicycleHub</h4>
+              <p class="text-xs md:text-sm text-slate-300">
+                Niche e-commerce experience concept for bicycles & accessories.
+              </p>
+              <div class="flex justify-between items-center mt-3">
+                <p class="text-[0.7rem] text-slate-400">E-commerce · MERN</p>
+                <a href="https://bicyclehub-pranit.vercel.app/" target="_blank"
+                  class="rounded-full border border-white/20 p-2 hover:bg-white hover:text-black transition">
+                  <i class="ri-external-link-line text-sm"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
-      <a href="https://geosight360.com/">
-        <img data-image="./images/geosight360-ui.png" class="popup-items w-full rounded-[20px] object-cover object-center" src="./images/geosight-down-ui.png " alt="">
-      </a>
-    </div>
-  </div>
 
-   <div class="page4-img4 flex flex-col md:flex-row justify-between gap-6 w-full md:w-[90%] m-auto">
-    <div class="page4-img5 mt-[-150px] w-full md:w-[50%] relative group">
-      <div class="absolute w-full h-10 left-0 top-0 bg-white text-black text-center z-50 pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        MERN STACK
+      <!-- ===== TOOLS & EXPERIMENTS ===== -->
+      <div class="mb-4 md:mb-6">
+        <div class="flex items-center justify-between gap-3 mb-5">
+          <h3 class="text-lg md:text-xl font-varta font-semibold flex items-center gap-2">
+            <span class="w-7 h-[2px] bg-purpalfade"></span> Tools & Experiments
+          </h3>
+          <p class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-500">React · Node · Mini Projects</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- TaskTree -->
+          <article
+            class="project-card group flex items-center justify-between gap-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-4">
+            <div class="flex-1">
+              <h4 class="font-varta font-semibold text-base md:text-lg">TaskTree</h4>
+              <p class="text-xs md:text-sm text-slate-300">
+                A React-based task management app with clean UI and smooth flows.
+              </p>
+              <p class="text-[0.7rem] text-slate-400 mt-2">React · Node</p>
+            </div>
+            <a href="https://tasktree-qctd.onrender.com/" target="_blank"
+              class="rounded-full border border-white/20 p-2 hover:bg-white hover:text-black transition shrink-0">
+              <i class="ri-external-link-line text-sm"></i>
+            </a>
+          </article>
+
+          <!-- Recipe Management -->
+          <article
+            class="project-card group flex items-center justify-between gap-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-4">
+            <div class="flex-1">
+              <h4 class="font-varta font-semibold text-base md:text-lg">Recipe Management System</h4>
+              <p class="text-xs md:text-sm text-slate-300">
+                CRUD-based recipe manager for organizing and storing cooking ideas.
+              </p>
+              <p class="text-[0.7rem] text-slate-400 mt-2">MERN · CRUD</p>
+            </div>
+            <a href="https://recipe-management-system-722w.onrender.com/" target="_blank"
+              class="rounded-full border border-white/20 p-2 hover:bg-white hover:text-black transition shrink-0">
+              <i class="ri-external-link-line text-sm"></i>
+            </a>
+          </article>
+        </div>
       </div>
-      <a href="https://nyandesk.vercel.app/">
-        <img data-image="./images/nyandesk.png" class="popup-items w-full rounded-[20px] object-cover object-center" src="./images/nyandesk.png" alt="">
-      </a>
-    </div>
-    <div class="w-full mt-10 md:w-[50%] relative group">
-      <div class="absolute w-full h-10 left-0 top-0 bg-white text-black text-center z-50 pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        MERN STACK
-      </div>
-      <a href="https://bicyclehub-pranit.vercel.app/">
-        <img data-image="./images/bicycleHub.png" class="popup-items w-full rounded-[20px] object-cover object-center" src="./images/bicycleHub.png" alt="">
-      </a>
-    </div>
 
-    
-  </div>
-</section>
-
-
-  <!-- ✅ Responsive Archive -->
-  <section class="w-full relative my-20 px-4">
-    <div
-      class="hoverdiv bg-cover bg-center bg-no-repeat hidden w-[25%] h-[60%] top-[50px] md:top-[0px] rounded-[10px] md:left-[70px] md:w-[20vw] md:h-[20vw] bg-white absolute z-10">
-    </div>
-    <div class="page5 w-full md:w-[90%] m-auto text-center">
-      <h5 class="mb-5">More Projects</h5>
-      <div class="inline-block space-y-4 md:space-y-0 md:space-x-6">
-        <h3
-          data-image="./images/todolist.png"
-          id="project-elem"
-          class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200 md:ml-5"><a
-            href="https://github.com/PranitWork/todolist-react">TodoList</a></h3>
-        <h3
-          data-image="./images/github-searcher.png"
-          id="project-elem" class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200"><a
-            href="https://pranitwork.github.io/Github-p-Searcher/">GitHub Profile Search</a></h3>
-        <h3
-          data-image="./images/twink-project.png"
-          id="project-elem" class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200"><a
-            href="https://pranitwork.github.io/twink-Project/">Twink Project Ui</a></h3>
-        <h3
-          data-image="./images/js-projects.png"
-          id="project-elem" class="underline text-2xl md:text-[3vh] hover:text-yelloworange ease-linear duration-200"><a
-            href="https://github.com/PranitWork/javascript-Projects">Javascript Mini Projects</a></h3>
-      </div>
+      <!-- ===== TEXT ARCHIVE / MORE PROJECTS ===== -->
+      <section class="w-full relative my-12">
+        <div
+          class="hoverdiv bg-cover bg-center bg-no-repeat hidden w-[55vw] md:w-[20vw] md:h-[20vw] h-[40vw] top-8 md:top-0 rounded-[16px] md:left-[70px] bg-white absolute z-10 shadow-card">
+        </div>
+        <div class="page5 w-full text-center md:text-left">
+          <h5 class="mb-5 text-xs md:text-sm uppercase tracking-[0.26em] text-slate-400">
+            Archive · More Experiments
+          </h5>
+          <div class="inline-flex flex-wrap gap-x-7 gap-y-3 justify-center md:justify-start text-sm md:text-base">
+            <h3 data-image="./images/todolist.png" id="project-elem"
+              class="underline underline-offset-4 hover:text-yelloworange ease-linear duration-200">
+              <a href="https://github.com/PranitWork/todolist-react" target="_blank">TodoList – React</a>
+            </h3>
+            <h3 data-image="./images/github-searcher.png" id="project-elem"
+              class="underline underline-offset-4 hover:text-yelloworange ease-linear duration-200">
+              <a href="https://pranitwork.github.io/Github-p-Searcher/" target="_blank">GitHub Profile Search</a>
+            </h3>
+            <h3 data-image="./images/twink-project.png" id="project-elem"
+              class="underline underline-offset-4 hover:text-yelloworange ease-linear duration-200">
+              <a href="https://pranitwork.github.io/twink-Project/" target="_blank">Twink Landing UI</a>
+            </h3>
+            <h3 data-image="./images/js-projects.png" id="project-elem"
+              class="underline underline-offset-4 hover:text-yelloworange ease-linear duration-200">
+              <a href="https://github.com/PranitWork/javascript-Projects" target="_blank">JavaScript Mini
+                Projects</a>
+            </h3>
+          </div>
+        </div>
+      </section>
     </div>
   </section>
 
-  <!-- ✅ Responsive Clients / Logos -->
-  <section class=" w-full bg-yellow-400 my-20 px-4">
-    <div class="marque flex items-center  w-full py-8 px-2">
-
-      <marquee direction="left" scrollamount="5" class="w-full text-black text-[5vh]">
-        HTML, CSS, JS, NODEJS, EXPRESSJS, REACTJS, MONGODB, MYSQL, WORDPRESS, SHOPIFY, WIX, AI
-      </marquee>
-
+  <!-- ============== Skills Marquee ============== -->
+  <section class="w-full my-10 md:my-16 px-0">
+    <div class="relative overflow-hidden py-6 bg-gradient-to-r from-yelloworange to-fadeGreen text-black">
+      <div
+        class="animate-[marquee_20s_linear_infinite] whitespace-nowrap font-varta text-sm md:text-lg font-semibold tracking-wide">
+        <span class="mx-10">HTML</span>
+        <span class="mx-10">CSS</span>
+        <span class="mx-10">JavaScript</span>
+        <span class="mx-10">Node.js</span>
+        <span class="mx-10">Express.js</span>
+        <span class="mx-10">React.js</span>
+        <span class="mx-10">Next.js</span>
+        <span class="mx-10">MongoDB</span>
+        <span class="mx-10">MySQL</span>
+        <span class="mx-10">WordPress</span>
+        <span class="mx-10">Shopify</span>
+        <span class="mx-10">Wix</span>
+        <span class="mx-10">UI/UX</span>
+        <span class="mx-10">AI Integrations</span>
+      </div>
     </div>
-    </div>
 
+    <style>
+      @keyframes marquee {
+        0% {
+          transform: translateX(0%);
+        }
+
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+    </style>
   </section>
 
-  <!-- ✅ Responsive About -->
-  <section id="about" class="w-full my-20 px-4">
-    <div class="page6 w-full md:w-[90%] m-auto">
-      <div class="text-3xl md:text-[6vh] leading-snug md:leading-[4vh] font-genos font-black mb-10">
+  <!-- ============== ABOUT ============== -->
+  <section id="about" class="w-full my-16 md:my-20 px-5 md:px-10">
+    <div class="page6 max-w-6xl mx-auto">
+      <div class="text-3xl md:text-5xl leading-snug md:leading-[3.4rem] font-genos font-black mb-10">
         <h3 class="text-work">About Me</h3>
         <h3>About Me</h3>
         <h3 class="text-work">About Me</h3>
       </div>
-      <div class="page6-content flex flex-col md:flex-row justify-between items-center gap-6 mt-10">
+
+      <div class="page6-content flex flex-col md:flex-row justify-between items-center gap-8 mt-6">
         <div
-          class="p-2 border bg-fadegray inline-block rounded-full hover:bg-white hover:text-black duration-200 ease-in">
-          <i class="ri-arrow-right-down-line text-[7vh]"></i>
+          class="p-3 border border-white/15 bg-fadegray/80 inline-flex rounded-full hover:bg-white hover:text-black duration-200 ease-in">
+          <i class="ri-arrow-right-down-line text-5xl"></i>
         </div>
-        <div class="w-full md:w-[40%]">
-          <p>A passionate product designer 🤙 with a knack for creating seamless user experiences...</p>
+        <div class="w-full md:w-[50%]">
+          <p class="text-sm md:text-base text-slate-200 leading-relaxed">
+            I’m a developer who thinks like a designer (and vice versa). I enjoy understanding business goals,
+            user behaviour and technical constraints – then turning all of that into products that feel
+            simple, fast, and polished.
+          </p>
+          <p class="text-sm md:text-base text-slate-300 leading-relaxed mt-4">
+            Whether it's a landing page for a new startup, a full-stack SaaS app, or a branding refresh, I love
+            working on projects end-to-end – from wireframes and prototypes to clean, maintainable code.
+          </p>
         </div>
       </div>
-      <div class="page6-content flex flex-col md:flex-row justify-between items-center gap-6 mt-10">
-        <div class="w-full md:w-[40%]">
-          <p>Driven by a minimalist aesthetic and a passion for problem-solving...</p>
+
+      <div class="page6-content flex flex-col md:flex-row justify-between items-center gap-8 mt-10">
+        <div class="w-full md:w-[45%]">
+          <p class="text-sm md:text-base text-slate-300 leading-relaxed">
+            Outside of work, I keep experimenting with new tech, refining my design taste, and mentoring folks
+            who are just getting into web development. If you have an idea you want to turn into a product,
+            we’ll probably get along.
+          </p>
         </div>
-        <div class="page6-content w-full md:w-[50%] text-right">
-          <button class="py-2 px-5 border rounded-full hover:bg-white hover:text-black duration-200 ease-in">
-            <a href="https://drive.google.com/file/d/1XDW4V2pnGWicL8NJ2RgLFdyuGv59JdGH/view?usp=sharing" target="_blank">Download My CV 📃</a>
+        <div class="w-full md:w-[40%] text-right">
+          <button
+            class="py-2.5 px-6 border border-white/20 rounded-full hover:bg-white hover:text-black duration-200 ease-in text-sm md:text-base">
+            <a href="https://drive.google.com/file/d/1XDW4V2pnGWicL8NJ2RgLFdyuGv59JdGH/view?usp=sharing"
+              target="_blank">
+              Download My CV 📃
+            </a>
           </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ✅ Responsive Footer -->
-  <section class="w-full mt-20 bg-[url('./images/footer-bg.png')] bg-cover bg-center bg-no-repeat px-4">
-    <div class="page7 w-full md:w-[90%] m-auto text-center py-20">
-      <p class="text-fadeGreen text-xl md:text-[3vh]">NEED A DESIGNER / DEVELOPER?</p>
-      <div class="mt-10 md:mt-20 text-4xl md:text-[10vh] font-genos font-black leading-tight md:leading-[9vh]">
+  <!-- ============== FOOTER / CONTACT ============== -->
+  <section
+    class="w-full mt-10 bg-[url('./images/footer-bg.png')] bg-cover bg-center bg-no-repeat px-5 md:px-10 border-t border-white/10">
+    <div class="page7 max-w-6xl mx-auto text-center py-16 md:py-20">
+      <p class="text-fadeGreen text-lg md:text-2xl">NEED A DESIGNER / DEVELOPER?</p>
+      <div
+        class="mt-8 md:mt-12 text-4xl md:text-6xl font-genos font-black leading-tight md:leading-[4.5rem] tracking-tight">
         <h1>Let’s Work</h1>
-        <h1 class="ml-0 md:ml-[35vh]">together.</h1>
+        <h1 class="md:ml-[16rem]">together.</h1>
       </div>
-      <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-5 mt-10">
+
+      <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 mt-10">
         <button
-          class="text-xl md:text-[3vh] py-2 px-5 border-[3px] rounded-full hover:bg-white hover:text-black duration-200 ease-in">
-          <a href="https://wa.me/918975205712">Message</a>
+          class="text-lg md:text-xl py-2 px-6 border-[2px] border-white/25 rounded-full hover:bg-white hover:text-black duration-200 ease-in flex items-center gap-2">
+          <a href="https://wa.me/918975205712" target="_blank">Message on WhatsApp</a>
+          <i class="ri-whatsapp-line text-2xl"></i>
         </button>
         <button id="schedulegmeet"
-          class="text-xl md:text-[3vh] py-2 px-5 border-[3px] rounded-full hover:bg-white hover:text-black duration-200 ease-in">
-          Discuss Project
+          class="text-lg md:text-xl py-2 px-6 border-[2px] border-white/25 rounded-full hover:bg-white hover:text-black duration-200 ease-in flex items-center gap-2">
+          <span>Discuss Project</span>
+          <i class="ri-arrow-right-up-line text-2xl"></i>
         </button>
       </div>
-      <div class="flex flex-col md:flex-row justify-center items-center mt-10 gap-4 md:gap-7 text-lg md:text-[3vh]">
-        <h4>📩 pranitworkspace@gmail.com</h4>
-        <h4>📞 +91 8975205712</h4>
+
+      <div class="flex flex-col md:flex-row justify-center items-center mt-10 gap-3 md:gap-7 text-sm md:text-base">
+        <h4>📩 <a href="mailto:pranitworkspace@gmail.com" class="hover:text-fadeGreen">pranitworkspace@gmail.com</a>
+        </h4>
+        <h4>📞 <a href="tel:+918975205712" class="hover:text-fadeGreen">+91 8975205712</a></h4>
       </div>
-      <div class="flex flex-col md:flex-row justify-center gap-10 my-20">
-        <!-- Example social blocks, same structure -->
+
+      <div class="flex justify-center gap-6 mt-8 text-xl">
+        <a href="https://www.linkedin.com/in/pranitdaphale/" target="_blank"
+          class="hover:text-fadeGreen transition-colors">
+          <i class="ri-linkedin-fill"></i>
+        </a>
+        <a href="https://github.com/PranitWork" target="_blank" class="hover:text-fadeGreen transition-colors">
+          <i class="ri-github-fill"></i>
+        </a>
+        <a href="https://www.instagram.com/pranit.daphale/" target="_blank"
+          class="hover:text-fadeGreen transition-colors">
+          <i class="ri-instagram-line"></i>
+        </a>
       </div>
-      <hr>
-      <div class="w-full md:w-[35%] m-auto mt-10 text-gray-400 text-sm md:text-[2vh]">
-        <p>Designed & developed with 🤍, by Pranit Daphale. ©2025 All Rights Reserved.</p>
+
+      <hr class="mt-12 border-white/15" />
+      <div class="w-full md:w-[50%] mx-auto mt-6 text-gray-400 text-xs md:text-sm">
+        <p>Designed & developed with 🤍 by Pranit Daphale. ©2025 All Rights Reserved.</p>
       </div>
     </div>
   </section>
 
+  <!-- Calendly inline widget script -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
-
-
-  <!-- Calendly inline widget begin -->
-
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<!-- Calendly inline widget end -->
-
-
+  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
     integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -379,7 +762,7 @@
     integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <script src="script.js"></script>
+  <script src="javascript.js"></script>
 </body>
 
 </html>
