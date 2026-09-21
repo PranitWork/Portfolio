@@ -4,7 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pranit Daphale – Portfolio</title>
+  <title>Pranit Daphale – Full Stack Developer & Product Designer</title>
+  <meta name="description"
+    content="Portfolio of Pranit Daphale — Full Stack Developer & Product Designer building web experiences, SaaS products and e-commerce brand sites." />
+  <link rel="icon" href="./images/pranit-daphale.png" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,6 +20,9 @@
     rel="stylesheet" />
 
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="./style.css" />
 
   <!-- Tailwind Config -->
   <script>
@@ -48,6 +54,36 @@
 
 <body class="font-anta scroll-smooth overflow-x-hidden text-white bg-primaryBG">
 
+  <!-- ============== Preloader ============== -->
+  <div id="preloader">
+    <div class="loader-word font-titilliumWeb">
+      <span>Pranit</span><span class="text-fadeGreen">.</span>
+    </div>
+    <div class="loader-bar"><span id="loader-bar-fill"></span></div>
+  </div>
+
+  <!-- Hard fallback: guarantees the page is never stuck behind the preloader
+       even if a CDN script (GSAP/Lenis) fails to load. -->
+  <script>
+    setTimeout(function () {
+      var pre = document.getElementById("preloader");
+      if (!pre || pre.style.display === "none") return;
+      pre.style.transition = "opacity .4s ease";
+      pre.style.opacity = "0";
+      document.body.style.overflow = "";
+      setTimeout(function () {
+        pre.style.display = "none";
+      }, 450);
+    }, 4000);
+  </script>
+
+  <!-- Grain overlay -->
+  <div class="grain"></div>
+
+  <!-- Custom cursor (desktop) -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
   <!-- ============== Schedule Call Modal ============== -->
   <div id="schedule-open"
     class="hidden fixed inset-0 bg-black/60 backdrop-blur-xl z-[60] flex items-center justify-center">
@@ -61,9 +97,9 @@
 
   <!-- Floating gradient blobs -->
   <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-    <div class="absolute -top-40 -left-20 w-[40rem] h-[40rem] bg-purpalfade/25 blur-3xl rounded-full"></div>
-    <div class="absolute top-40 right-[-10rem] w-[35rem] h-[35rem] bg-yelloworange/20 blur-3xl rounded-full"></div>
-    <div class="absolute bottom-[-15rem] left-10 w-[30rem] h-[30rem] bg-fadeGreen/15 blur-3xl rounded-full"></div>
+    <div id="blob-1" class="absolute -top-40 -left-20 w-[40rem] h-[40rem] bg-purpalfade/25 blur-3xl rounded-full"></div>
+    <div id="blob-2" class="absolute top-40 right-[-10rem] w-[35rem] h-[35rem] bg-yelloworange/20 blur-3xl rounded-full"></div>
+    <div id="blob-3" class="absolute bottom-[-15rem] left-10 w-[30rem] h-[30rem] bg-fadeGreen/15 blur-3xl rounded-full"></div>
   </div>
 
   <!-- ============== Navbar ============== -->
@@ -87,6 +123,7 @@
       <div id="desktop-menu" class="hidden md:flex items-center space-x-10">
         <ul class="flex gap-8 items-center font-varta text-sm md:text-base">
           <li><a class="hover:text-yelloworange duration-200" href="#work">Projects</a></li>
+          <li><a class="hover:text-yelloworange duration-200" href="#process">Process</a></li>
           <li><a class="hover:text-yelloworange duration-200" href="#about">About</a></li>
 
           <li class="relative group cursor-pointer">
@@ -100,9 +137,9 @@
             <div class="absolute left-0 top-full w-full h-3"></div>
 
             <!-- Dropdown -->
-            <ul class="absolute top-[calc(100%+0.5rem)] left-0 
+            <ul class="absolute top-[calc(100%+0.5rem)] left-0
            hidden group-hover:block
-           bg-slate-950/90 border border-white/10 rounded-xl 
+           bg-slate-950/90 border border-white/10 rounded-xl
            p-3 w-[160px] space-y-2
            z-50">
               <li><a class="hover:text-fadeGreen" href="https://www.linkedin.com/in/pranitdaphale/"
@@ -117,8 +154,8 @@
 
         </ul>
 
-        <button id="schedulegmeet"
-          class="py-2 px-5 border border-white/15 rounded-full hover:bg-fadeGreen hover:border-black hover:text-black duration-200">
+        <button id="schedulegmeet" data-magnetic
+          class="magnetic py-2 px-5 border border-white/15 rounded-full hover:bg-fadeGreen hover:border-black hover:text-black duration-200">
           Book a Call
         </button>
       </div>
@@ -130,6 +167,7 @@
 
       <ul class="flex flex-col gap-4 font-varta text-base">
         <li><a class="hover:text-yelloworange duration-200" href="#work">Projects</a></li>
+        <li><a class="hover:text-yelloworange duration-200" href="#process">Process</a></li>
         <li><a class="hover:text-yelloworange duration-200" href="#about">About</a></li>
 
         <li>
@@ -174,8 +212,8 @@
 
         <h1
           class="font-titilliumWeb font-black text-[2.3rem] leading-snug md:text-[3.8rem] md:leading-[4.2rem] tracking-tight">
-          Designing <span class="text-yelloworange">delightful</span> experiences<br />
-          & engineering <span class="text-purpalfade">reliable</span> products.
+          <span class="split-line"><span>Designing <span class="text-yelloworange">delightful</span> experiences</span></span>
+          <span class="split-line"><span>& engineering <span class="text-purpalfade">reliable</span> products.</span></span>
         </h1>
 
         <p class="text-sm md:text-base text-slate-300 max-w-xl">
@@ -184,14 +222,14 @@
         </p>
 
         <div class="flex flex-wrap gap-3 md:gap-4 items-center">
-          <button id="schedulegmeet"
-            class="inline-flex items-center gap-2 bg-white text-black px-5 py-2.5 rounded-full text-sm md:text-base font-medium hover:bg-fadeGreen hover:text-black transition shadow-card">
+          <button id="schedulegmeet" data-magnetic
+            class="magnetic inline-flex items-center gap-2 bg-white text-black px-5 py-2.5 rounded-full text-sm md:text-base font-medium hover:bg-fadeGreen hover:text-black transition shadow-card">
             <span>Discuss a Project</span>
             <i class="ri-sparkling-2-line text-lg"></i>
           </button>
 
-          <a href="#work"
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/25 text-xs md:text-sm hover:border-fadeGreen hover:bg-fadeGreen/10 transition">
+          <a href="#work" data-magnetic
+            class="magnetic inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/25 text-xs md:text-sm hover:border-fadeGreen hover:bg-fadeGreen/10 transition">
             <span>View Selected Work</span>
             <i class="ri-arrow-down-line text-base"></i>
           </a>
@@ -211,7 +249,7 @@
 
       <!-- Right Image -->
       <div class="relative flex justify-center items-center md:justify-end">
-        <div
+        <div id="hero-glow"
           class="absolute inset-0 blur-3xl bg-gradient-to-br from-yelloworange/30 via-purpalfade/40 to-fadeGreen/25 rounded-[3rem] scale-110 opacity-80">
         </div>
         <div
@@ -242,11 +280,46 @@
     </div>
   </section>
 
-  <!-- ============== Page 2 – Intro + Hero Projects Stack ============== -->
+  <!-- ============== Trusted-by brand marquee ============== -->
+  <section class="w-full mt-10 md:mt-14 px-0">
+    <p class="text-center text-[0.7rem] md:text-xs uppercase tracking-[0.3em] text-slate-500 mb-4">
+      Brands & products I've built for
+    </p>
+    <div class="relative overflow-hidden border-y border-white/10 py-4 bg-white/[0.02]">
+      <div class="marquee-track font-varta text-sm md:text-base text-slate-300">
+        <span class="mx-8 flex items-center gap-8">
+          <span>Arykai</span><span class="text-white/15">/</span>
+          <span>Justfit</span><span class="text-white/15">/</span>
+          <span>IKIMI</span><span class="text-white/15">/</span>
+          <span>Wasted Wrld</span><span class="text-white/15">/</span>
+          <span>DB Bricks</span><span class="text-white/15">/</span>
+          <span>Mleko Cafe</span><span class="text-white/15">/</span>
+          <span>Breadko</span><span class="text-white/15">/</span>
+          <span>Geosight360</span><span class="text-white/15">/</span>
+          <span>Swarai</span><span class="text-white/15">/</span>
+          <span>Nyandesk</span>
+        </span>
+        <span class="mx-8 flex items-center gap-8" aria-hidden="true">
+          <span>Arykai</span><span class="text-white/15">/</span>
+          <span>Justfit</span><span class="text-white/15">/</span>
+          <span>IKIMI</span><span class="text-white/15">/</span>
+          <span>Wasted Wrld</span><span class="text-white/15">/</span>
+          <span>DB Bricks</span><span class="text-white/15">/</span>
+          <span>Mleko Cafe</span><span class="text-white/15">/</span>
+          <span>Breadko</span><span class="text-white/15">/</span>
+          <span>Geosight360</span><span class="text-white/15">/</span>
+          <span>Swarai</span><span class="text-white/15">/</span>
+          <span>Nyandesk</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== Page 2 – Intro + Stats ============== -->
   <section class="page2 w-full mt-16 md:mt-24 px-5 md:px-10">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-10">
       <!-- Text Block -->
-      <div class="page2-content w-full md:w-[50%] flex items-center">
+      <div data-reveal class="page2-content w-full md:w-[50%] flex items-center">
         <h2 class="text-xl md:text-3xl font-varta font-semibold leading-relaxed">
           I craft <span class="text-yelloworange">unconventional</span> yet functional experiences for
           <span class="text-purpalfade">web</span> & <span class="text-purpalfade">mobile</span>,
@@ -254,8 +327,34 @@
           <span class="underline decoration-yelloworange/60">engineering discipline</span>.
         </h2>
       </div>
+    </div>
 
-
+    <!-- Stats -->
+    <div class="stats-grid max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12 md:mt-16">
+      <div data-reveal class="stat-card rounded-2xl border border-white/10 bg-white/[0.03] p-5 md:p-6 text-center">
+        <p class="text-3xl md:text-4xl font-genos font-black text-fadeGreen">
+          <span data-count="15">0</span>+
+        </p>
+        <p class="text-[0.7rem] md:text-xs uppercase tracking-[0.14em] text-slate-400 mt-2">Client Websites</p>
+      </div>
+      <div data-reveal class="stat-card rounded-2xl border border-white/10 bg-white/[0.03] p-5 md:p-6 text-center">
+        <p class="text-3xl md:text-4xl font-genos font-black text-yelloworange">
+          <span data-count="3">0</span>
+        </p>
+        <p class="text-[0.7rem] md:text-xs uppercase tracking-[0.14em] text-slate-400 mt-2">SaaS Products</p>
+      </div>
+      <div data-reveal class="stat-card rounded-2xl border border-white/10 bg-white/[0.03] p-5 md:p-6 text-center">
+        <p class="text-3xl md:text-4xl font-genos font-black text-purpalfade">
+          <span data-count="20">0</span>+
+        </p>
+        <p class="text-[0.7rem] md:text-xs uppercase tracking-[0.14em] text-slate-400 mt-2">Tools & Experiments</p>
+      </div>
+      <div data-reveal class="stat-card rounded-2xl border border-white/10 bg-white/[0.03] p-5 md:p-6 text-center">
+        <p class="text-3xl md:text-4xl font-genos font-black text-white">
+          <span data-count="14">0</span>+
+        </p>
+        <p class="text-[0.7rem] md:text-xs uppercase tracking-[0.14em] text-slate-400 mt-2">Technologies</p>
+      </div>
     </div>
   </section>
 
@@ -274,7 +373,7 @@
         <i class="ri-arrow-right-down-line text-2xl"></i>
       </div>
       <div
-        class="page3-info-content px-6 py-5 md:px-8 md:py-7 border border-white/15 inline-flex flex-col md:flex-row items-start md:items-center gap-3 rounded-[999px] w-full md:w-[70%] bg-black/40 backdrop-blur-md hover:bg-white hover:text-black duration-200 ease-in">
+        data-reveal class="page3-info-content px-6 py-5 md:px-8 md:py-7 border border-white/15 inline-flex flex-col md:flex-row items-start md:items-center gap-3 rounded-[999px] w-full md:w-[70%] bg-black/40 backdrop-blur-md hover:bg-white hover:text-black duration-200 ease-in">
         <p class="text-xs md:text-sm uppercase tracking-[0.18em] text-slate-300">
           Things I can help you with
         </p>
@@ -289,7 +388,7 @@
   <section id="work" class="page4 w-full px-5 md:px-10 py-10 md:py-16">
     <div class="max-w-6xl mx-auto">
       <!-- Section Title -->
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+      <div data-reveal class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
         <div>
           <p class="uppercase text-[0.7rem] tracking-[0.2em] text-slate-400 mb-2">Selected Work</p>
           <h2 class="text-2xl md:text-4xl font-genos font-black">
@@ -301,136 +400,184 @@
         </p>
       </div>
 
-      <!-- ===== CLIENT WEBSITES ===== -->
-      <div class="mb-12 md:mb-16">
+      <!-- Filter pills -->
+      <div class="flex flex-wrap gap-3 mb-10">
+        <button data-filter="all" data-active="true"
+          data-reveal class="filter-pill px-4 py-2 rounded-full text-xs md:text-sm border border-white/15 hover:border-fadeGreen transition">
+          All Work
+        </button>
+        <button data-filter="client"
+          data-reveal class="filter-pill px-4 py-2 rounded-full text-xs md:text-sm border border-white/15 hover:border-fadeGreen transition">
+          Client Websites
+        </button>
+        <button data-filter="saas"
+          data-reveal class="filter-pill px-4 py-2 rounded-full text-xs md:text-sm border border-white/15 hover:border-fadeGreen transition">
+          SaaS & Products
+        </button>
+        <button data-filter="tools"
+          data-reveal class="filter-pill px-4 py-2 rounded-full text-xs md:text-sm border border-white/15 hover:border-fadeGreen transition">
+          Tools & Experiments
+        </button>
+      </div>
+
+      <!-- ===== CLIENT WEBSITES (bento grid) ===== -->
+      <div class="filter-group mb-14 md:mb-20" data-category="client">
         <div class="flex items-center justify-between gap-3 mb-5">
           <h3 class="text-lg md:text-xl font-varta font-semibold flex items-center gap-2">
             <span class="w-7 h-[2px] bg-yelloworange"></span> Client Websites
           </h3>
-          <p class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-500">WordPress · Shopify · Brand Sites</p>
+          <p class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-500">Shopify · WordPress · Custom Builds</p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-7">
+        <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-[170px] md:auto-rows-[190px] gap-4 md:gap-6"
+          style="grid-auto-flow: dense;">
+
+          <!-- IKIMI (feature tile) -->
+          <article
+            data-reveal class="project-card client-tile group relative col-span-2 row-span-2 bg-slate-900/60 border border-white/10 rounded-3xl shadow-card">
+            <a href="https://theikimistore.com/" target="_blank" class="absolute inset-0 z-20" aria-label="Open IKIMI"></a>
+            <div
+              class="absolute left-3 top-3 z-20 px-3 py-1 rounded-full text-[0.7rem] bg-black/70 border border-white/15">
+              Shopify · Wellness
+            </div>
+            <img data-image="./images/ikimi-detail.jpg" class="popup-items w-full h-full object-cover object-center"
+              src="./images/ikimi-hero.jpg" alt="IKIMI luxury evening-ritual & self-care store" />
+            <div class="tile-overlay absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-10">
+              <h4 class="font-varta font-semibold text-lg md:text-2xl">IKIMI</h4>
+              <p class="text-xs md:text-sm text-slate-200/90 max-w-md mt-1">
+                Luxury evening-ritual & self-care label — minimalist Shopify storefront devoted to sleep &
+                wellness rituals.
+              </p>
+              <span class="inline-flex items-center gap-1 text-[0.75rem] text-fadeGreen mt-3">
+                theikimistore.com <i class="ri-arrow-right-up-line"></i>
+              </span>
+            </div>
+          </article>
+
           <!-- Arykai -->
           <article
-            class="project-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card">
-            <div class="relative overflow-hidden">
-              <div
-                class="absolute left-3 top-3 z-20 px-3 py-1 rounded-full text-[0.7rem] bg-black/70 border border-white/15">
-                Shopify
-              </div>
-              <a href="https://arykai.com/" target="_blank">
-                <img data-image="./images/arykai-hover.png"
-                  class="popup-items w-full h-[260px] object-cover object-center transition-transform duration-500 group-hover:scale-[1.06]"
-                  src="./images/arykai-ui.png" alt="Arykai" />
-              </a>
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              </div>
+            data-reveal class="project-card client-tile group relative col-span-1 row-span-1 bg-slate-900/60 border border-white/10 rounded-3xl shadow-card">
+            <a href="https://arykai.com/" target="_blank" class="absolute inset-0 z-20" aria-label="Open Arykai"></a>
+            <div
+              class="absolute left-3 top-3 z-20 px-2.5 py-1 rounded-full text-[0.65rem] bg-black/70 border border-white/15">
+              Shopify
             </div>
-            <div class="p-4 md:p-5 flex items-center justify-between gap-3">
-              <div>
-                <h4 class="font-varta font-semibold text-base md:text-lg">Arykai</h4>
-                <p class="text-xs md:text-sm text-slate-400">Premium skincare Shopify storefront.</p>
-              </div>
-              <a href="https://arykai.com/" target="_blank"
-                class="rounded-full border border-white/20 p-2 hover:bg-white hover:text-black transition">
-                <i class="ri-external-link-line text-sm"></i>
-              </a>
+            <img data-image="./images/arykai-hover.png" class="popup-items w-full h-full object-cover object-center"
+              src="./images/arykai-ui.png" alt="Arykai" />
+            <div class="tile-overlay absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4 z-10">
+              <h4 class="font-varta font-semibold text-sm md:text-base">Arykai</h4>
+              <p class="text-[0.7rem] text-slate-300 hidden md:block">Premium skincare storefront.</p>
             </div>
           </article>
 
           <!-- Justfit -->
           <article
-            class="project-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card">
-            <div class="relative overflow-hidden">
-              <div
-                class="absolute left-3 top-3 z-20 px-3 py-1 rounded-full text-[0.7rem] bg-black/70 border border-white/15">
-                WordPress
-              </div>
-              <a href="https://justfit.in/" target="_blank">
-                <img data-image="./images/justfit-hover.png"
-                  class="popup-items w-full h-[260px] object-cover object-center transition-transform duration-500 group-hover:scale-[1.06]"
-                  src="./images/justfit-ui.png" alt="Justfit" />
-              </a>
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              </div>
+            data-reveal class="project-card client-tile group relative col-span-1 row-span-1 bg-slate-900/60 border border-white/10 rounded-3xl shadow-card">
+            <a href="https://justfit.in/" target="_blank" class="absolute inset-0 z-20" aria-label="Open Justfit"></a>
+            <div
+              class="absolute left-3 top-3 z-20 px-2.5 py-1 rounded-full text-[0.65rem] bg-black/70 border border-white/15">
+              WordPress
             </div>
-            <div class="p-4 md:p-5 flex items-center justify-between gap-3">
-              <div>
-                <h4 class="font-varta font-semibold text-base md:text-lg">Justfit</h4>
-                <p class="text-xs md:text-sm text-slate-400">Fitness & wellness brand presence.</p>
-              </div>
-              <a href="https://justfit.in/" target="_blank"
-                class="rounded-full border border-white/20 p-2 hover:bg-white hover:text-black transition">
-                <i class="ri-external-link-line text-sm"></i>
-              </a>
+            <img data-image="./images/justfit-hover.png" class="popup-items w-full h-full object-cover object-center"
+              src="./images/justfit-ui.png" alt="Justfit" />
+            <div class="tile-overlay absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4 z-10">
+              <h4 class="font-varta font-semibold text-sm md:text-base">Justfit</h4>
+              <p class="text-[0.7rem] text-slate-300 hidden md:block">Fitness & wellness brand.</p>
+            </div>
+          </article>
+
+          <!-- Wasted Wrld (wordmark tile) -->
+          <article
+            data-reveal class="project-card client-tile wordmark-tile group relative col-span-1 row-span-1 border border-white/10 rounded-3xl shadow-card flex items-center justify-center">
+            <a href="https://wastedwrld.com/" target="_blank" class="absolute inset-0 z-20" aria-label="Open Wasted Wrld"></a>
+            <div
+              class="absolute left-3 top-3 z-20 px-2.5 py-1 rounded-full text-[0.65rem] bg-black/70 border border-white/15">
+              Shopify
+            </div>
+            <img src="./images/wastedwrld-logo.png" alt="Wasted Wrld"
+              class="w-[70%] object-contain opacity-90 grayscale group-hover:grayscale-0 transition duration-500" />
+            <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4 z-10 text-center">
+              <p class="text-[0.7rem] text-slate-300">Brutalist fashion label.</p>
             </div>
           </article>
 
           <!-- DB Bricks -->
           <article
-            class="project-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card md:col-span-2">
-            <div class="relative overflow-hidden">
-              <div
-                class="absolute left-3 top-3 z-20 px-3 py-1 rounded-full text-[0.7rem] bg-black/70 border border-white/15">
-                WordPress
-              </div>
-              <a href="https://db-bricks.com/" target="_blank">
-                <img data-image="./images/db-bricks-hover.png"
-                  class="popup-items w-full h-[260px] md:h-[320px] object-cover object-center transition-transform duration-500 group-hover:scale-[1.04]"
-                  src="./images/db-bricks-ui.png" alt="DB Bricks" />
-              </a>
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              </div>
+            data-reveal class="project-card client-tile group relative col-span-2 row-span-1 bg-slate-900/60 border border-white/10 rounded-3xl shadow-card">
+            <a href="https://db-bricks.com/" target="_blank" class="absolute inset-0 z-20" aria-label="Open DB Bricks"></a>
+            <div
+              class="absolute left-3 top-3 z-20 px-2.5 py-1 rounded-full text-[0.65rem] bg-black/70 border border-white/15">
+              WordPress
             </div>
-            <div class="p-4 md:p-5 flex items-center justify-between gap-3">
-              <div>
-                <h4 class="font-varta font-semibold text-base md:text-lg">DB Bricks</h4>
-                <p class="text-xs md:text-sm text-slate-400">Industrial brick manufacturer web presence.</p>
-              </div>
-              <a href="https://db-bricks.com/" target="_blank"
-                class="rounded-full border border-white/20 p-2 hover:bg-white hover:text-black transition">
-                <i class="ri-external-link-line text-sm"></i>
-              </a>
+            <img data-image="./images/db-bricks-hover.png" class="popup-items w-full h-full object-cover object-center"
+              src="./images/db-bricks-ui.png" alt="DB Bricks" />
+            <div class="tile-overlay absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4 z-10">
+              <h4 class="font-varta font-semibold text-sm md:text-base">DB Bricks</h4>
+              <p class="text-[0.7rem] text-slate-300 hidden md:block">Industrial brick manufacturer web presence.</p>
+            </div>
+          </article>
+
+          <!-- Mleko Cafe -->
+          <article
+            data-reveal class="project-card client-tile group relative col-span-1 row-span-1 bg-slate-900/60 border border-white/10 rounded-3xl shadow-card">
+            <a href="https://mlekocafe.in/" target="_blank" class="absolute inset-0 z-20" aria-label="Open Mleko Cafe"></a>
+            <div
+              class="absolute left-3 top-3 z-20 px-2.5 py-1 rounded-full text-[0.65rem] bg-black/70 border border-white/15">
+              WordPress
+            </div>
+            <img data-image="./images/mleko-hero.jpg" class="popup-items w-full h-full object-cover object-center"
+              src="./images/mleko-detail.jpg" alt="Mleko Cafe" />
+            <div class="tile-overlay absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4 z-10">
+              <h4 class="font-varta font-semibold text-sm md:text-base">Mleko Cafe</h4>
+              <p class="text-[0.7rem] text-slate-300 hidden md:block">Specialty coffee & bakery brand.</p>
             </div>
           </article>
 
           <!-- Geosight360 -->
           <article
-            class="project-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card">
-            <div class="relative overflow-hidden">
-              <div
-                class="absolute left-3 top-3 z-20 px-3 py-1 rounded-full text-[0.7rem] bg-black/70 border border-white/15">
-                WordPress · Brand
-              </div>
-              <a href="https://geosight360.com/" target="_blank">
-                <img data-image="./images/geosight360-ui.png"
-                  class="popup-items w-full h-[260px] object-cover object-center transition-transform duration-500 group-hover:scale-[1.06]"
-                  src="./images/geosight-down-ui.png" alt="Geosight360" />
-              </a>
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              </div>
+            data-reveal class="project-card client-tile group relative col-span-1 row-span-1 bg-slate-900/60 border border-white/10 rounded-3xl shadow-card">
+            <a href="https://geosight360.com/" target="_blank" class="absolute inset-0 z-20" aria-label="Open Geosight360"></a>
+            <div
+              class="absolute left-3 top-3 z-20 px-2.5 py-1 rounded-full text-[0.65rem] bg-black/70 border border-white/15">
+              WordPress
             </div>
-            <div class="p-4 md:p-5 flex items-center justify-between gap-3">
-              <div>
-                <h4 class="font-varta font-semibold text-base md:text-lg">Geosight360</h4>
-                <p class="text-xs md:text-sm text-slate-400">Geospatial engineering & surveying brand site.</p>
-              </div>
-              <a href="https://geosight360.com/" target="_blank"
-                class="rounded-full border border-white/20 p-2 hover:bg-white hover:text-black transition">
-                <i class="ri-external-link-line text-sm"></i>
-              </a>
+            <img data-image="./images/geosight360-ui.png" class="popup-items w-full h-full object-cover object-center"
+              src="./images/geosight-down-ui.png" alt="Geosight360" />
+            <div class="tile-overlay absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4 z-10">
+              <h4 class="font-varta font-semibold text-sm md:text-base">Geosight360</h4>
+              <p class="text-[0.7rem] text-slate-300 hidden md:block">Geospatial engineering brand site.</p>
+            </div>
+          </article>
+
+          <!-- Breadko -->
+          <article
+            data-reveal class="project-card client-tile group relative col-span-2 row-span-1 bg-slate-900/60 border border-white/10 rounded-3xl shadow-card">
+            <a href="https://breadko.in/" target="_blank" class="absolute inset-0 z-20" aria-label="Open Breadko"></a>
+            <div
+              class="absolute left-3 top-3 z-20 px-2.5 py-1 rounded-full text-[0.65rem] bg-black/70 border border-white/15">
+              Custom Build · B2B
+            </div>
+            <img class="popup-items w-full h-full object-cover object-center"
+              src="./images/breadko-og.jpg" alt="Breadko artisanal bakery" />
+            <div class="tile-overlay absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4 z-10">
+              <h4 class="font-varta font-semibold text-sm md:text-base">Breadko</h4>
+              <p class="text-[0.7rem] text-slate-300 hidden md:block">
+                Artisanal bakery supplying hotels, cafés & QSRs pan-India.
+              </p>
             </div>
           </article>
         </div>
       </div>
 
       <!-- ===== SAAS & PRODUCTS ===== -->
-      <div class="mb-12 md:mb-16">
+      <div class="filter-group mb-14 md:mb-20" data-category="saas">
         <div class="flex items-center justify-between gap-3 mb-5">
           <h3 class="text-lg md:text-xl font-varta font-semibold flex items-center gap-2">
             <span class="w-7 h-[2px] bg-fadeGreen"></span> SaaS & Products
@@ -441,7 +588,7 @@
         <div class="grid md:grid-cols-3 gap-7">
           <!-- Swarai SaaS -->
           <article
-            class="project-card group relative bg-gradient-to-b from-slate-900 to-slate-950 border border-emerald-400/40 rounded-3xl overflow-hidden shadow-card">
+            data-reveal class="project-card spotlight-card group relative bg-gradient-to-b from-slate-900 to-slate-950 border border-emerald-400/40 rounded-3xl overflow-hidden shadow-card">
             <div class="p-5 pb-4 flex flex-col gap-3 h-full">
               <div class="flex items-center justify-between gap-2">
                 <span
@@ -482,7 +629,7 @@
 
           <!-- Nyandesk -->
           <article
-            class="project-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card">
+            data-reveal class="project-card spotlight-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card">
             <div class="relative overflow-hidden">
               <div
                 class="absolute left-3 top-3 z-20 px-3 py-1 rounded-full text-[0.7rem] bg-black/70 border border-white/15">
@@ -511,7 +658,7 @@
 
           <!-- BicycleHub -->
           <article
-            class="project-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card">
+            data-reveal class="project-card spotlight-card group relative bg-slate-900/60 border border-white/10 rounded-3xl overflow-hidden shadow-card">
             <div class="relative overflow-hidden">
               <div
                 class="absolute left-3 top-3 z-20 px-3 py-1 rounded-full text-[0.7rem] bg-black/70 border border-white/15">
@@ -541,7 +688,7 @@
       </div>
 
       <!-- ===== TOOLS & EXPERIMENTS ===== -->
-      <div class="mb-4 md:mb-6">
+      <div class="filter-group mb-4 md:mb-6" data-category="tools">
         <div class="flex items-center justify-between gap-3 mb-5">
           <h3 class="text-lg md:text-xl font-varta font-semibold flex items-center gap-2">
             <span class="w-7 h-[2px] bg-purpalfade"></span> Tools & Experiments
@@ -552,7 +699,7 @@
         <div class="grid md:grid-cols-2 gap-6">
           <!-- TaskTree -->
           <article
-            class="project-card group flex items-center justify-between gap-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-4">
+            data-reveal class="project-card group flex items-center justify-between gap-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-4">
             <div class="flex-1">
               <h4 class="font-varta font-semibold text-base md:text-lg">TaskTree</h4>
               <p class="text-xs md:text-sm text-slate-300">
@@ -568,7 +715,7 @@
 
           <!-- Recipe Management -->
           <article
-            class="project-card group flex items-center justify-between gap-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-4">
+            data-reveal class="project-card group flex items-center justify-between gap-4 bg-slate-900/70 border border-white/10 rounded-2xl px-4 py-4">
             <div class="flex-1">
               <h4 class="font-varta font-semibold text-base md:text-lg">Recipe Management System</h4>
               <p class="text-xs md:text-sm text-slate-300">
@@ -582,46 +729,106 @@
             </a>
           </article>
         </div>
+
+        <!-- ===== TEXT ARCHIVE / MORE PROJECTS ===== -->
+        <section class="w-full relative my-12">
+          <div
+            class="hoverdiv bg-cover bg-center bg-no-repeat hidden w-[55vw] md:w-[20vw] md:h-[20vw] h-[40vw] top-8 md:top-0 rounded-[16px] md:left-[70px] bg-white absolute z-10 shadow-card">
+          </div>
+          <div data-reveal class="page5 w-full text-center md:text-left">
+            <h5 class="mb-5 text-xs md:text-sm uppercase tracking-[0.26em] text-slate-400">
+              Archive · More Experiments
+            </h5>
+            <div class="inline-flex flex-wrap gap-x-7 gap-y-3 justify-center md:justify-start text-sm md:text-base">
+              <h3 data-image="./images/todolist.png" id="project-elem"
+                class="underline underline-offset-4 hover:text-yelloworange ease-linear duration-200">
+                <a href="https://github.com/PranitWork/todolist-react" target="_blank">TodoList – React</a>
+              </h3>
+              <h3 data-image="./images/github-searcher.png" id="project-elem"
+                class="underline underline-offset-4 hover:text-yelloworange ease-linear duration-200">
+                <a href="https://pranitwork.github.io/Github-p-Searcher/" target="_blank">GitHub Profile Search</a>
+              </h3>
+              <h3 data-image="./images/twink-project.png" id="project-elem"
+                class="underline underline-offset-4 hover:text-yelloworange ease-linear duration-200">
+                <a href="https://pranitwork.github.io/twink-Project/" target="_blank">Twink Landing UI</a>
+              </h3>
+              <h3 data-image="./images/Js-projects.png" id="project-elem"
+                class="underline underline-offset-4 hover:text-yelloworange ease-linear duration-200">
+                <a href="https://github.com/PranitWork/javascript-Projects" target="_blank">JavaScript Mini
+                  Projects</a>
+              </h3>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== PROCESS ============== -->
+  <section id="process" class="w-full px-5 md:px-10 py-10 md:py-16">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-10 md:mb-14">
+        <p class="uppercase text-[0.7rem] tracking-[0.2em] text-slate-400 mb-2">How I Work</p>
+        <h2 class="text-2xl md:text-4xl font-genos font-black">From Idea to Launch</h2>
       </div>
 
-      <!-- ===== TEXT ARCHIVE / MORE PROJECTS ===== -->
-      <section class="w-full relative my-12">
-        <div
-          class="hoverdiv bg-cover bg-center bg-no-repeat hidden w-[55vw] md:w-[20vw] md:h-[20vw] h-[40vw] top-8 md:top-0 rounded-[16px] md:left-[70px] bg-white absolute z-10 shadow-card">
+      <div class="grid md:grid-cols-4 gap-6">
+        <div data-reveal class="process-step rounded-2xl border border-white/10 bg-white/[0.03] p-6 relative">
+          <span class="text-4xl font-genos font-black text-white/10 absolute top-4 right-5">01</span>
+          <i class="ri-search-eye-line text-2xl text-fadeGreen"></i>
+          <h4 class="font-varta font-semibold text-base md:text-lg mt-4">Discover</h4>
+          <p class="text-xs md:text-sm text-slate-400 mt-2">
+            Understand your goals, users & constraints before writing a single line of code.
+          </p>
         </div>
-        <div class="page5 w-full text-center md:text-left">
-          <h5 class="mb-5 text-xs md:text-sm uppercase tracking-[0.26em] text-slate-400">
-            Archive · More Experiments
-          </h5>
-          <div class="inline-flex flex-wrap gap-x-7 gap-y-3 justify-center md:justify-start text-sm md:text-base">
-            <h3 data-image="./images/todolist.png" id="project-elem"
-              class="underline underline-offset-4 hover:text-yelloworange ease-linear duration-200">
-              <a href="https://github.com/PranitWork/todolist-react" target="_blank">TodoList – React</a>
-            </h3>
-            <h3 data-image="./images/github-searcher.png" id="project-elem"
-              class="underline underline-offset-4 hover:text-yelloworange ease-linear duration-200">
-              <a href="https://pranitwork.github.io/Github-p-Searcher/" target="_blank">GitHub Profile Search</a>
-            </h3>
-            <h3 data-image="./images/twink-project.png" id="project-elem"
-              class="underline underline-offset-4 hover:text-yelloworange ease-linear duration-200">
-              <a href="https://pranitwork.github.io/twink-Project/" target="_blank">Twink Landing UI</a>
-            </h3>
-            <h3 data-image="./images/js-projects.png" id="project-elem"
-              class="underline underline-offset-4 hover:text-yelloworange ease-linear duration-200">
-              <a href="https://github.com/PranitWork/javascript-Projects" target="_blank">JavaScript Mini
-                Projects</a>
-            </h3>
-          </div>
+        <div data-reveal class="process-step rounded-2xl border border-white/10 bg-white/[0.03] p-6 relative">
+          <span class="text-4xl font-genos font-black text-white/10 absolute top-4 right-5">02</span>
+          <i class="ri-pencil-ruler-2-line text-2xl text-yelloworange"></i>
+          <h4 class="font-varta font-semibold text-base md:text-lg mt-4">Design</h4>
+          <p class="text-xs md:text-sm text-slate-400 mt-2">
+            Wireframes & UI exploration focused on clarity, brand and conversion.
+          </p>
         </div>
-      </section>
+        <div data-reveal class="process-step rounded-2xl border border-white/10 bg-white/[0.03] p-6 relative">
+          <span class="text-4xl font-genos font-black text-white/10 absolute top-4 right-5">03</span>
+          <i class="ri-code-s-slash-line text-2xl text-purpalfade"></i>
+          <h4 class="font-varta font-semibold text-base md:text-lg mt-4">Build</h4>
+          <p class="text-xs md:text-sm text-slate-400 mt-2">
+            Clean, scalable code across React/Next.js, WordPress or Shopify — whatever fits.
+          </p>
+        </div>
+        <div data-reveal class="process-step rounded-2xl border border-white/10 bg-white/[0.03] p-6 relative">
+          <span class="text-4xl font-genos font-black text-white/10 absolute top-4 right-5">04</span>
+          <i class="ri-rocket-2-line text-2xl text-fadeGreen"></i>
+          <h4 class="font-varta font-semibold text-base md:text-lg mt-4">Launch</h4>
+          <p class="text-xs md:text-sm text-slate-400 mt-2">
+            Ship, monitor and iterate — with support after go-live, not just before.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ============== Skills Marquee ============== -->
-  <section class="w-full my-10 md:my-16 px-0">
-    <div class="relative overflow-hidden py-6 bg-gradient-to-r from-yelloworange to-fadeGreen text-black">
-      <div
-        class="animate-[marquee_20s_linear_infinite] whitespace-nowrap font-varta text-sm md:text-lg font-semibold tracking-wide">
+  <section class="w-full my-10 md:my-16 px-0 space-y-2">
+    <div class="relative overflow-hidden py-5 bg-gradient-to-r from-yelloworange to-fadeGreen text-black -rotate-1">
+      <div class="marquee-track font-varta text-sm md:text-lg font-semibold tracking-wide">
+        <span class="mx-10">HTML</span>
+        <span class="mx-10">CSS</span>
+        <span class="mx-10">JavaScript</span>
+        <span class="mx-10">Node.js</span>
+        <span class="mx-10">Express.js</span>
+        <span class="mx-10">React.js</span>
+        <span class="mx-10">Next.js</span>
+        <span class="mx-10">MongoDB</span>
+        <span class="mx-10">MySQL</span>
+        <span class="mx-10">WordPress</span>
+        <span class="mx-10">Shopify</span>
+        <span class="mx-10">Wix</span>
+        <span class="mx-10">UI/UX</span>
+        <span class="mx-10">AI Integrations</span>
+      </div>
+      <div class="marquee-track font-varta text-sm md:text-lg font-semibold tracking-wide" aria-hidden="true">
         <span class="mx-10">HTML</span>
         <span class="mx-10">CSS</span>
         <span class="mx-10">JavaScript</span>
@@ -638,37 +845,47 @@
         <span class="mx-10">AI Integrations</span>
       </div>
     </div>
-
-    <style>
-      @keyframes marquee {
-        0% {
-          transform: translateX(0%);
-        }
-
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-    </style>
+    <div class="relative overflow-hidden py-5 bg-slate-900 text-slate-200 border-y border-white/10 rotate-1">
+      <div class="marquee-track reverse font-varta text-sm md:text-lg font-semibold tracking-wide">
+        <span class="mx-10">Discover</span>
+        <span class="mx-10 text-fadeGreen">•</span>
+        <span class="mx-10">Design</span>
+        <span class="mx-10 text-yelloworange">•</span>
+        <span class="mx-10">Build</span>
+        <span class="mx-10 text-purpalfade">•</span>
+        <span class="mx-10">Launch</span>
+        <span class="mx-10 text-fadeGreen">•</span>
+      </div>
+      <div class="marquee-track reverse font-varta text-sm md:text-lg font-semibold tracking-wide" aria-hidden="true">
+        <span class="mx-10">Discover</span>
+        <span class="mx-10 text-fadeGreen">•</span>
+        <span class="mx-10">Design</span>
+        <span class="mx-10 text-yelloworange">•</span>
+        <span class="mx-10">Build</span>
+        <span class="mx-10 text-purpalfade">•</span>
+        <span class="mx-10">Launch</span>
+        <span class="mx-10 text-fadeGreen">•</span>
+      </div>
+    </div>
   </section>
 
   <!-- ============== ABOUT ============== -->
   <section id="about" class="w-full my-16 md:my-20 px-5 md:px-10">
     <div class="page6 max-w-6xl mx-auto">
-      <div class="text-3xl md:text-5xl leading-snug md:leading-[3.4rem] font-genos font-black mb-10">
+      <div data-reveal class="text-3xl md:text-5xl leading-snug md:leading-[3.4rem] font-genos font-black mb-10">
         <h3 class="text-work">About Me</h3>
         <h3>About Me</h3>
         <h3 class="text-work">About Me</h3>
       </div>
 
-      <div class="page6-content flex flex-col md:flex-row justify-between items-center gap-8 mt-6">
+      <div data-reveal class="page6-content flex flex-col md:flex-row justify-between items-center gap-8 mt-6">
         <div
           class="p-3 border border-white/15 bg-fadegray/80 inline-flex rounded-full hover:bg-white hover:text-black duration-200 ease-in">
           <i class="ri-arrow-right-down-line text-5xl"></i>
         </div>
         <div class="w-full md:w-[50%]">
           <p class="text-sm md:text-base text-slate-200 leading-relaxed">
-            I’m a developer who thinks like a designer (and vice versa). I enjoy understanding business goals,
+            I'm a developer who thinks like a designer (and vice versa). I enjoy understanding business goals,
             user behaviour and technical constraints – then turning all of that into products that feel
             simple, fast, and polished.
           </p>
@@ -679,17 +896,17 @@
         </div>
       </div>
 
-      <div class="page6-content flex flex-col md:flex-row justify-between items-center gap-8 mt-10">
+      <div data-reveal class="page6-content flex flex-col md:flex-row justify-between items-center gap-8 mt-10">
         <div class="w-full md:w-[45%]">
           <p class="text-sm md:text-base text-slate-300 leading-relaxed">
             Outside of work, I keep experimenting with new tech, refining my design taste, and mentoring folks
             who are just getting into web development. If you have an idea you want to turn into a product,
-            we’ll probably get along.
+            we'll probably get along.
           </p>
         </div>
         <div class="w-full md:w-[40%] text-right">
-          <button
-            class="py-2.5 px-6 border border-white/20 rounded-full hover:bg-white hover:text-black duration-200 ease-in text-sm md:text-base">
+          <button data-magnetic
+            class="magnetic py-2.5 px-6 border border-white/20 rounded-full hover:bg-white hover:text-black duration-200 ease-in text-sm md:text-base">
             <a href="https://drive.google.com/file/d/1SJ2HPqTjGyCgnBeykbyJFml_DEOmuBf-/view?usp=sharing"
               target="_blank">
               Download My CV 📃
@@ -703,22 +920,22 @@
   <!-- ============== FOOTER / CONTACT ============== -->
   <section
     class="w-full mt-10 bg-[url('./images/footer-bg.png')] bg-cover bg-center bg-no-repeat px-5 md:px-10 border-t border-white/10">
-    <div class="page7 max-w-6xl mx-auto text-center py-16 md:py-20">
+    <div data-reveal class="page7 max-w-6xl mx-auto text-center py-16 md:py-20">
       <p class="text-fadeGreen text-lg md:text-2xl">NEED A DESIGNER / DEVELOPER?</p>
       <div
         class="mt-8 md:mt-12 text-4xl md:text-6xl font-genos font-black leading-tight md:leading-[4.5rem] tracking-tight">
-        <h1>Let’s Work</h1>
+        <h1>Let's Work</h1>
         <h1 class="md:ml-[16rem]">together.</h1>
       </div>
 
       <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 mt-10">
-        <button
-          class="text-lg md:text-xl py-2 px-6 border-[2px] border-white/25 rounded-full hover:bg-white hover:text-black duration-200 ease-in flex items-center gap-2">
+        <button data-magnetic
+          class="magnetic text-lg md:text-xl py-2 px-6 border-[2px] border-white/25 rounded-full hover:bg-white hover:text-black duration-200 ease-in flex items-center gap-2">
           <a href="https://wa.me/918975205712" target="_blank">Message on WhatsApp</a>
           <i class="ri-whatsapp-line text-2xl"></i>
         </button>
-        <button id="schedulegmeet"
-          class="text-lg md:text-xl py-2 px-6 border-[2px] border-white/25 rounded-full hover:bg-white hover:text-black duration-200 ease-in flex items-center gap-2">
+        <button id="schedulegmeet" data-magnetic
+          class="magnetic text-lg md:text-xl py-2 px-6 border-[2px] border-white/25 rounded-full hover:bg-white hover:text-black duration-200 ease-in flex items-center gap-2">
           <span>Discuss Project</span>
           <i class="ri-arrow-right-up-line text-2xl"></i>
         </button>
@@ -751,6 +968,12 @@
     </div>
   </section>
 
+  <!-- Back to top -->
+  <button id="back-to-top" data-magnetic
+    class="hide fixed bottom-6 right-6 z-40 w-11 h-11 md:w-12 md:h-12 rounded-full bg-white text-black flex items-center justify-center shadow-card">
+    <i class="ri-arrow-up-line text-lg"></i>
+  </button>
+
   <!-- Calendly inline widget script -->
   <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
@@ -761,6 +984,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
     integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 
   <script src="./script.js"></script>
 </body>
